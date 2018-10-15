@@ -17,7 +17,7 @@
   color: white;
 }
 .header{
-  background-color: #ef5734;
+  background-color: #222;
 }
 .infoCategory{
     padding: 15px 30px 15px 30px;
@@ -79,4 +79,77 @@ a:hover, a:focus { outline: none; text-decoration: none; }
 @media only screen and (max-width: 479px) {
 /* .tab .nav-tabs li { width: 100%; text-align: center; margin: 0 0 10px 0; } */
 .tab .nav-tabs li:after { width: 0; height: 100%; top: auto; bottom: -60%; right: 50%; }
+}
+
+/*酒店查找模块*/
+.hotel-search-card {
+    position: absolute;
+    z-index: 100;
+    height: 55%;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: white;
+    box-shadow: -4px -4px 0 4px #337ab7, 4px 4px 0 4px #33cc99;
+
+}
+/*外层模块*/
+.outer-card {
+    position: relative;
+}
+/*搜索标签页*/
+.search-tab {
+    margin-top: 20px;
+}
+/*搜索输入框标头*/
+.input-head-search {
+    width: 32%;
+    text-align: right;
+}
+/*搜索输入框*/
+.input-search {
+    width: auto;
+}
+/*搜索按钮图标*/
+.icon-search {
+    color: white;
+    font-weight: bold;
+}
+/*搜索输入框条目*/
+.item-search {
+    margin-top: 20px;
+    margin-bottom: 20px;   
+}
+/*搜索按钮*/
+.button-search {
+    background: linear-gradient(45deg,#33cc99,#337ab7);
+    border: 0;
+}
+/*日历图标*/
+.icon-calendar {
+    padding: 7px 0 0 0;
+}
+/*日期控件*/
+.input-daterangepicker {
+    padding-right: 5px;
+}
+/*主题文字*/
+.title-theme {
+    color: white;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 25%;
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+}
+/*单个主题outer*/
+.outer-theme-single {
+    position: relative;
 }
