@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <form action="" method="POST">
+        <div class="dowebok">
+            <div class="form-item">
+                <input id="phoneNumber" name="phoneNumber" type="text" autocomplete="off" placeholder="手机号">
+                <p class="tip">请输入手机号</p>
+            </div>
+            <div class="form-item">
+                <input id="password" name="password" type="password" autocomplete="off" placeholder="密码">
+                <p class="tip">用户名或密码不正确</p>
+            </div>
+            <div class="form-item">
+                    <input id="veriCode" name="veriCode" type="text" autocomplete="off" placeholder="验证码"><div class="veriCodeImg"><img src="images/password.png" alt=""></div> 
+                    <!-- <span><div><img src="images/banner.jpg" alt=""></div></span>  -->
+                    <p class="tip">验证码不正确</p>   
+            </div>
+            <div class="form-item"><button id="submit">登 录</button></div>
+            <div class="reg-bar">
+                <a class="reg" href="userRegister.html">立即注册</a>
+            </div>
+        </div>
+    </form>
+    <script src="js/jquery-2.1.4.min.js"></script> 
+    <script>
+        $(function () {
+            $('input').val('')
+            $('#submit').on('click', function () {
+                $('.tip').show()
+            })
+        })
+    </script>
+
+</body>
+</html>

@@ -42,7 +42,8 @@ a:focus{
 /*--header -top--*/
 /*-- nav --*/
 .w3_navigation {
-    padding: 0.9em 0;
+	padding: 0.9em 0;
+	background-color: white;
 }
 .navbar-default {
     background: none;
