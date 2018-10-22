@@ -51,7 +51,7 @@
 <div class="splitLine"></div>
 
 <div class="info">
-    <div class="orderInfo">
+    <!-- <div class="orderInfo">
         <div class="info_top"><p class="orderNo">订单号：5435135456413</p><p class="bookTime">预订时间：19/10/2018</p> </div>
         <div style="clear:both"></div>
         <img class="orderImg" src="images/g1.jpg" alt="">
@@ -63,48 +63,18 @@
         <div class="middle">
             <p>&nbsp;</p>
             <p class="time">入离时间：19/10/2018 ~ 20/10/2018</p>
-            <p class="charge"><b>￥500</b> </p>
+            <p class="charge">￥<b class="totalPrice">500</b> </p>
         </div>
         <div class="right">
 			<p class="orderSatus">预订成功</p>
 			<button type="button" class="evaluateBtn btn">我要点评</button>
         </div>
         <div style="clear:both"><br></div>
-    </div>
-    
+    </div> -->
 </div>
-
-<!-- footer -->
-<div class="footer">
-		<div class="container">
-			<div class="agile_footer_copy">
-				<div class="w3agile_footer_grids">
-					<div class="col-md-4 w3agile_footer_grid">
-						<h3>关于我们</h3>
-						<p>???<span>???</span><span>???</span></p>
-					</div>
-					<div class="col-md-4 w3agile_footer_grid">
-						<h3>联系方式</h3>
-						<ul>
-							<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>D G U T</li>
-							<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>666666666@qq.com</li>
-							<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+135 8888 8888</li>
-						</ul>
-					</div>
-					<div class="col-md-4 w3agile_footer_grid w3agile_footer_grid1">
-						<h3>导航</h3>
-						<ul>
-							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="index.html">首页</a></li>
-							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="domesticSearch.html">国内酒店</a></li>
-							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="foreignSearch.html">国际酒店</a></li>
-						</ul>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //footer -->
+<div class="pageDiv">
+	<div id="page"></div>
+</div>
 
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
@@ -112,43 +82,89 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/paging.js"></script> 
 <script src="js/bootstrap-3.1.1.min.js"></script>
+<script src="js/jquery.params.js"></script>
 <script>
-		function pagingSettings(totalPage, currPage){
-			$.createpagination({
-				total_page: totalPage,
-				current_page: currPage,
-				callback: function(html_str){
-					$("#page").append(html_str);
-				}
-			})
-		}
+	function pagingSettings(totalPage, currPage){
+		$('#page').createpagination({
+			total_page: totalPage,
+			current_page: currPage,
+			onclick: function(number){
+				window.location.href='myHotelOrder.html?pageNum='+number;
+			}
+		});
+	}
 </script>
-
 <script>
 	$(document).ready(function(){
-		var hotelId = 14;
-		//获取酒店的基本信息
-		$.post("http://120.79.73.26:8081/hotel/selectBaseByHotelId",
+		var userId = 1;
+		var pageNum = $.query.get("pageNum");
+		var pageSize = 10;
+		//获取所有订单信息
+		$.post("http://120.79.73.26:8081/order/selectOrderByUserId",
 		{
-			id:hotelId
+			pageNum:pageNum,
+			pageSize:pageSize,
+			userId:userId
 		},
 		function(data,status){
 			if(data["code"] == 0){
-				$('.hotelName').text(data.content.name);
-				$('.hotelAddr').text(data.content.address);
-				for(var i = 1; i <= 7; i ++){
-					var imgURL = data.content.hotelPhotos[i].url;
-					$('.pic'+i).attr("src", imgURL);
+				for(var i = 0; i < data.content.list.length; i ++){
+					var bookTime = data.content.list[i].ordertime.substring(0, 10);
+					var checkIn = data.content.list[i].checkInTime.substring(0, 10);
+					var checkOut = data.content.list[i].checkOutTime.substring(0, 10);
+					var state;
+					if(data.content.list[i].state == 1){
+						state = "等待支付";
+					} else if(data.content.list[i].state == 2){
+						state = "等待审核";
+					} else if(data.content.list[i].state == 3){
+						state = "等待入住";
+					} else if(data.content.list[i].state == 4){
+						state = "已退房&nbsp&nbsp&nbsp&nbsp";
+					} else if(data.content.list[i].state == 5){
+						state = "已退房&nbsp&nbsp&nbsp&nbsp";
+					} else{
+						state = "订单失效";
+					}
+					var orderNoDiv = "<div class=\"orderInfo\">"+
+							"<div class=\"info_top\"><p class=\"orderNo\">订单号："+data.content.list[i].orderId+"</p><p class=\"bookTime\">预订时间："+bookTime+"</p></div>"+
+							"<div style=\"clear:both\"></div>"+
+							"<img class=\"orderImg\" src=\""+data.content.list[i].hotel.photos+"\" alt=\"\">"+
+							"<div class=\"left\">"+
+								"<p class=\"hotelName\">"+data.content.list[i].hotel.name+"</p>"+
+								"<p class=\"hotelAddr\">"+data.content.list[i].hotel.address+"</p>"+
+								"<p class=\"tel\">电话："+data.content.list[i].hotel.phone+"</p>"+
+							"</div>"+
+							"<div class=\"middle\">"+
+								"<p>&nbsp;</p>"+
+								"<p class=\"time\">入离时间："+checkIn+" ~ "+checkOut+"</p>"+
+								"<p class=\"charge\">￥<b class=\"totalPrice\">"+data.content.list[i].totalPrice+"</b> </p>"+
+							"</div>"+
+							"<div class=\"right\">"+
+								"<p class=\"orderSatus\">"+state+"</p>"+
+								"<button type=\"button\" class=\"evaluateBtn btn\">我要点评</button>"+
+								"<button type=\"button\" class=\"evaluateBtn2 btn\">已点评</button>"+
+							"</div>"+
+							"<div style=\"clear:both\"><br></div>"+
+						"</div>";
+						
+					$(".info").append(orderNoDiv);
+					if(data.content.list[i].state == 4){
+						$('.evaluateBtn2').remove();
+					} else if(data.content.list[i].state == 5){
+						$('.evaluateBtn').remove();
+					} else{
+						$('.evaluateBtn').remove();
+						$('.evaluateBtn2').remove();
+					}
 				}
-				$('.minPrice').html("￥<p>"+data.content.minPrice+"</p>起");
-				var score;
-				if(data.content.avgGrade == null){
-					score = 0;
-				} else{
-					score = data.content.avgGrade.toFixed(2);
-				}
-				$('.hotelScore').text(score);
-				$('.moveto_comment').html("<a href=\"#comment\">前往查看" + data.content.totalCommnet + "条评论》</a>");
+				
+				// roomId_list = document.getElementsByClassName('bookBtn');
+				// roomId_list[i].roomId = data.content[i].id;
+				// roomId_list[i].onclick=function(){
+				// 	window.location.href='paymentOrder.html?roomId='+this.roomId+'&checkIn='+checkIn+'&checkOut='+checkOut;
+				// }
+				pagingSettings(data.content.pages,data.content.pageNum);
 			}
 		});
 		

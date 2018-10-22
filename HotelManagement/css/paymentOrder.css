@@ -53,6 +53,10 @@ input{
     line-height: 45px;
     margin-top: 20px;
 }
+.right table p{
+    display: inline;
+    color: red;
+}
 .info{
     width: 600px;
     margin: 0 auto;
@@ -64,8 +68,11 @@ input{
 .checkInInfo{
     margin-top: 25px;
 }
-.time, .roomNum, .charge, .name, .phone, .email{
-    padding-left: 30px;
+.time, .roomNum, .charge, .linkman, .phone, .email{
+    padding-left: 20px;
+}
+.availableRoomNum{
+    float: right;
 }
 .roomNumDiv a{
     padding: 2px 8px;

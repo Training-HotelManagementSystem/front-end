@@ -153,10 +153,3 @@ a:hover, a:focus { outline: none; text-decoration: none; }
 .outer-theme-single {
     position: relative;
 }
-/*banner信息*/
-.banner-info {
-    position: relative;
-    left: 50%;
-    width: 50%;
-    padding-top: 16em;
-}

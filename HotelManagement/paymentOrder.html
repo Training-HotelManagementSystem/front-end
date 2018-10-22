@@ -105,7 +105,8 @@
                         <td class="roomNum">
                             <div class="roomNumDiv">
                                 <a href="#" onclick="subtractPrice()">-</a><input type="text" id="roomNum" value="1" readonly="readonly"><a href="#" onclick="add()">+</a>
-                            </div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库存：<div class="availableRoomNum"><p id="availableRoomNum"></p></div>
+							</div>
                         </td>
                     </tr>
                     <tr>
@@ -117,15 +118,15 @@
             <div class="split"></div>
             <div class="checkInInfo">
                 <h3>入住信息</h3>
-                <table>
+                <table> 
+                    <tr class="addLinkman1">
+                        <td>房间1<p>*</p></td>
+                        <td class="linkman"><input type="text" placeholder="输入姓名" id="linkman1"></td>
+					</tr>
                     <tr>
-                        <td>联系人</td>
-                        <td class="linkman"><input type="text" placeholder="输入姓名" id="linkman"></td>
-                    </tr>
-                    <tr>
-                        <td>联系电话</td>
+                        <td>联系电话<p>*</p></td>
                         <td class="phone"><input type="text" placeholder="输入手机号" id="phone"></td>
-                    </tr>
+					</tr>
                     <tr>
                         <td>E-mail</td>
                         <td class="email"><input type="text" placeholder="输入邮箱" id="email"></td>
@@ -180,13 +181,13 @@
 <script>
 	var price;
 	var totalPrice;
+	var availableRoomNum;
 	var roomId = $.query.get("roomId");
 	var checkIn = $.query.get("checkIn");
 	var checkOut = $.query.get("checkOut");
 	var hotelId;
 	var userId = "";
 	$(document).ready(function(){
-		
 		//获取酒店的基本信息
 		$.post("http://120.79.73.26:8081/roomCategory/selectRoomCategoryById",
 		{
@@ -197,7 +198,7 @@
 		function(data,status){
 			if(data["code"] == 0){
 				//left
-				console.log(data.content.hotel);
+				console.log(data.content);
 				$('.hotelImg').attr("src", data.content.hotel.photos);
 				$('.hotelName').text(data.content.hotel.name);
 				$('.hotelAddr').text(data.content.hotel.address);
@@ -205,6 +206,8 @@
 				$('.area').text(data.content.area);
 				$('.bedManagement').text(data.content.bedManagement);
 				hotelId = data.content.hotel.id;
+				availableRoomNum = data.content.availableRoomNum;
+				$('#availableRoomNum').text(data.content.availableRoomNum);
 				if(data.content.breakfast == 0){
 					var breakfast = "无早";
 					$('.breakfast').text(breakfast);
@@ -229,19 +232,38 @@
 		if(num > 1){
 			totalPrice -= price;
 			num = num - 1;
+			var asd = ".addLinkman"+Number($('#roomNum').val());
+			$(".addLinkman"+Number($('#roomNum').val())).remove();
+			$(".right").css("height", $(".right").height()-50);
+			$(".paymentOrder").css("height", $(".paymentOrder").height()-50);
 		}
 		$('#roomNum').val(num);
-		$('.price').text('￥'+totalPrice);
+		$('.price').text(totalPrice);
 	}
 	function add(){
-		totalPrice += price;
-		var num = Number($('#roomNum').val());
-		num = num + 1;
-		$('#roomNum').val(num);
-		$('.price').text('￥'+totalPrice);
+		if(Number($('#roomNum').val() < availableRoomNum)){
+			totalPrice += price;
+			var num = Number($('#roomNum').val());
+			num = num + 1;
+			$('#roomNum').val(num);
+			$('.price').text(totalPrice);
+			var linkmanDiv = "<tr class=\"addLinkman"+num+"\"><td>房间"+num+"<p>*</p></td><td class=\"linkman\"><input type=\"text\" placeholder=\"输入姓名\" id=\"linkman"+num+"\"></td></tr>";
+			$(".addLinkman"+(num-1)).after(linkmanDiv);
+			$(".right").css("height", $(".right").height()+50);
+			$(".paymentOrder").css("height", $(".paymentOrder").height()+50);
+		}
 	}
 	function submitOrder(){
-		var linkman =  $('#linkman').val();
+		var linkman;
+		for(var i = 0; i < Number($('#roomNum').val()); i ++){
+			if(i == 0){
+				linkman = $('#linkman1').val();
+			} else{
+				linkman += '#';
+				var j = i + 1;
+				linkman += $('#linkman'+j).val();
+			}
+		}
 		var roomNum = $('#roomNum').val();
 		var phone = $('#phone').val();
 		var email = $('#email').val();

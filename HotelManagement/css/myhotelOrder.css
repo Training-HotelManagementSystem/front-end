@@ -1,5 +1,5 @@
 .info{
-    margin: 0 auto;
+    margin: 50px auto;
     width: 1000px;
 }
 .orderInfo{
@@ -20,6 +20,7 @@
 }
 .orderImg{
     width:150px;
+    height: 100px;
     float: left;
     margin-left: 10px;
 }
@@ -53,8 +54,13 @@
    font-size: 20px;
    margin-right: 20px;
 }
-.evaluateBtn{
+.evaluateBtn, .evaluateBtn2{
     margin-top: 20px;
     background-color: #ef5734;
     color: white;
+}
+.pageDiv{
+    margin: 50px auto;
+    width: 1000px;
+    padding-left: 28%;
 }
