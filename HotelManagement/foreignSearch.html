@@ -7,16 +7,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<title>去 边 度 - 国际酒店</title>
-<!-- custom-theme -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Boat house Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<title>去 边 度 - 国际酒店</title>
+	<!-- custom-theme -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Boat house Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //custom -->
-<link href="css/index.css" rel="stylesheet"> 
 <!-- //custom-theme -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/JiSlider.css" rel="stylesheet"> 
@@ -24,244 +23,295 @@ Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, Son
 <!-- font-awesome-icons -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome-icons -->
-<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/baguetteBox.min.css">
+<link rel="stylesheet" href="css/thumbnail-gallery.css">
+<link href="css/index.css" rel="stylesheet">
+<!-- <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
 </head>
 <body>
-<!-- header -->
-<div class="banner-top">
-	<div class="header">
-	<div class="container">
-			<div class="header-left">
-				<div class="agileinfo-phone">
-					<p><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> +135 8888 8888</p>
+	<!-- header -->
+	<div class="banner-top">
+		<div class="header">
+			<div class="container">
+				<div class="header-left">
+					<div class="agileinfo-phone">
+						<p><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> +135 8888 8888</p>
+					</div>
+					<div class="agileinfo-phone agileinfo-map">
+						<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>  D G U T</p>
+					</div>
+					<div class="login">
+						<a href="userLogin.html">登 录</a> / <a href="userRegister.html">注 册</a>
+					</div>
+					<div class="clearfix"> </div>
 				</div>
-				<div class="agileinfo-phone agileinfo-map">
-					<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>  D G U T</p>
-				</div>
-				<div class="login">
-					<a href="userLogin.html">登 录</a> / <a href="userRegister.html">注 册</a>
-				</div>
-				<div class="clearfix"> </div>
+			</div>	
+		</div>
+
+		<div class="w3_navigation">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header navbar-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1><a class="navbar-brand" href="index.html"> 去 边 度 </a></h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<nav class="menu menu--iris">
+							<ul class="nav navbar-nav menu__list">
+								<li class="menu__item"><a href="index.html" class="menu__link">首页</a></li>
+								<li class="menu__item"><a href="domesticSearch.html" class="menu__link">国内酒店</a></li>
+								<li class="menu__item menu__item--current"><a href="foreignSearch.html" class="menu__link">国际酒店</a></li>
+								<li class="menu__item"><a href="" class=""> </a></li>
+							</ul>
+						</nav>
+					</div>
+				</nav>
 			</div>
-		</div>	
-	</div>
+		</div>
+		<!-- //header -->
+		<!-- banner -->
+		<div class="outer-card">
+			<!-- hotel-search-card -->
+			<div class="hotel-search-card col-md-3 col-md-offset-2">
+				<div class="search-tab">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active"><a href="#overseas" data-toggle="tab"><b>国际·港澳台酒店</b></a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade in active" id="overseas">
+							<form class="form-horizontal">
+								<div class="form-group item-search">
+									<label for="destination" class="col-sm-3 control-label">目的地</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="destination" placeholder="首尔">
+									</div>
+								</div>
+								<div class="form-group item-search">
+									<label for="daterangepicker-overseas" class="col-sm-3 control-label">入住时间</label>
+									<div class="col-sm-8 input-daterangepicker">
+										<input class="form-control" name="daterange" id="daterangepicker-overseas">
+									</div>
+									<label for="daterangepicker-overseas" class="glyphicon glyphicon-calendar btn-lg icon-calendar"></label>
+								</div>
+								<div class="form-group item-search">
+									<label for="keywords" class="col-sm-3 control-label">关键词</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="keywords" placeholder="商圈/位置/酒店名">
+									</div>
+								</div>
+								<div class="form-group item-search">
+									<div class="col-sm-12">
+										<span type="submit" class="form-control btn btn-primary button-search" id="search-hotel">
+											<span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span> 搜索
+										</span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- hotel-search-card -->
 
-	<div class="w3_navigation">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header navbar-left">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<h1><a class="navbar-brand" href="index.html"> 去 边 度 </a></h1>
+			<!-- banner -->
+			<div class="banner-silder">
+				<div id="JiSlider" class="jislider">
+					<ul>
+						<li>
+							<div class="w3layouts-banner-top">
+
+								<div class="container">
+									<div class="agileits-banner-info banner-info">
+
+										<h3>Sed blandit massa vel </h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
+
+									</div>	
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="w3layouts-banner-top w3layouts-banner-top1">
+								<div class="container">
+									<div class="agileits-banner-info banner-info">
+
+										<h3>Ipsum dolor sit amet</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
+
+									</div>	
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="w3layouts-banner-top w3layouts-banner-top2">
+								<div class="container">
+									<div class="agileits-banner-info banner-info">
+
+										<h3>Consectetur adipiscing elit</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
+
+									</div>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="w3layouts-banner-top w3layouts-banner-top3">
+								<div class="container">
+									<div class="agileits-banner-info banner-info">
+
+										<h3>Blandit massa vel mauris</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
+
+									</div>
+
+								</div>
+							</div>
+						</li>
+					</ul>
 				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-					<nav class="menu menu--iris">
-						<ul class="nav navbar-nav menu__list">
-							<li class="menu__item"><a href="index.html" class="menu__link">首页</a></li>
-							<li class="menu__item"><a href="domesticSearch.html" class="menu__link">国内酒店</a></li>
-							<li class="menu__item menu__item--current"><a href="foreignSearch.html" class="menu__link">国际酒店</a></li>
-							<li class="menu__item"><a href="" class=""> </a></li>
-						</ul>
-					</nav>
-				</div>
-			</nav>
+			</div>
+			<!-- //banner -->
 		</div>
 	</div>
-<!-- //header -->
-<!-- banner -->
-	<div class="banner-silder">
-		<div id="JiSlider" class="jislider">
-			<ul>
-				<li>
-					<div class="w3layouts-banner-top">
-
-							<div class="container">
-								<div class="agileits-banner-info">
-								
-									<h3>Sed blandit massa vel </h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>	
-							</div>
-						</div>
-				</li>
-				<li>
-						<div class="w3layouts-banner-top w3layouts-banner-top1">
-						<div class="container">
-								<div class="agileits-banner-info">
-								 
-									<h3>Ipsum dolor sit amet</h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>	
-							</div>
-						</div>
-				</li>
-				<li>
-						<div class="w3layouts-banner-top w3layouts-banner-top2">
-							<div class="container">
-								<div class="agileits-banner-info">
-								    
-									<h3>Consectetur adipiscing elit</h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>
-								
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3layouts-banner-top w3layouts-banner-top3">
-							<div class="container">
-								<div class="agileits-banner-info">
-								 
-									<h3>Blandit massa vel mauris</h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>
-								
-							</div>
-						</div>
-					</li>
-			</ul>
-		</div>
-      </div>
-</div>
-<!-- //banner -->
+	<!-- //banner -->
 
 	<!--citiesInfo-->
 	<div class="citiesInfo">
 		<div class="container">
-		  <div class="row">
-			<div class="infoCategory">
-			  国外
-			  <div class="splitLine"></div>
-			</div>
-			<div class="tab" role="tabpanel"> 
-			  <!-- Nav tabs -->
-			  <ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#DomesticFeature1" aria-controls="DomesticFeature1" role="tab" data-toggle="tab">Section 1</a></li>
-				<li role="presentation"><a href="#DomesticFeature2" aria-controls="DomesticFeature2" role="tab" data-toggle="tab">Section 2</a></li>
-				<li role="presentation"><a href="#DomesticFeature3" aria-controls="DomesticFeature3" role="tab" data-toggle="tab">Section 3</a></li>
-				<li role="presentation"><a href="#DomesticFeature4" aria-controls="DomesticFeature4" role="tab" data-toggle="tab">Section 4</a></li>
-				<li role="presentation"><a href="#DomesticFeature5" aria-controls="DomesticFeature5" role="tab" data-toggle="tab">Section 5</a></li>
-			  </ul>
-			  <!-- Tab panes -->
-			  <div class="tab-content tabs">
-				<div role="tabpanel" class="tab-pane in active" id="DomesticFeature1">
-				  <div class="citieslist">
-					<div class="cityInfo" onmouseover="divOver(this)">
-					  <img src="icon/1.jpg">
-					  <div class="cityInfoTitle">asd</div>
+			<div class="row">
+				<div class="infoCategory">
+					国外
+					<div class="splitLine"></div>
+				</div>
+				<div class="tab" role="tabpanel"> 
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#DomesticFeature1" aria-controls="DomesticFeature1" role="tab" data-toggle="tab">Section 1</a></li>
+						<li role="presentation"><a href="#DomesticFeature2" aria-controls="DomesticFeature2" role="tab" data-toggle="tab">Section 2</a></li>
+						<li role="presentation"><a href="#DomesticFeature3" aria-controls="DomesticFeature3" role="tab" data-toggle="tab">Section 3</a></li>
+						<li role="presentation"><a href="#DomesticFeature4" aria-controls="DomesticFeature4" role="tab" data-toggle="tab">Section 4</a></li>
+						<li role="presentation"><a href="#DomesticFeature5" aria-controls="DomesticFeature5" role="tab" data-toggle="tab">Section 5</a></li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content tabs">
+						<div role="tabpanel" class="tab-pane in active" id="DomesticFeature1">
+							<div class="citieslist">
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/2.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/3.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/4.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="DomesticFeature2">
+							<div class="citieslist">
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/5.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/6.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/7.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/8.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="DomesticFeature3">
+							<div class="citieslist">
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="DomesticFeature4">
+							<div class="citieslist">
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="DomesticFeature5">
+							<div class="citieslist">
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+								<div class="cityInfo" onmouseover="divOver(this)">
+									<img src="icon/1.jpg">
+									<div class="cityInfoTitle">asd</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="cityInfo" onmouseover="divOver(this)">
-						<img src="icon/2.jpg">
-						<div class="cityInfoTitle">asd</div>
-					  </div>
-					  <div class="cityInfo" onmouseover="divOver(this)">
-						  <img src="icon/3.jpg">
-						  <div class="cityInfoTitle">asd</div>
-						</div>
-						<div class="cityInfo" onmouseover="divOver(this)">
-							<img src="icon/4.jpg">
-							<div class="cityInfoTitle">asd</div>
-						  </div>
-				  </div>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="DomesticFeature2">
-					<div class="citieslist">
-						<div class="cityInfo" onmouseover="divOver(this)">
-						  <img src="icon/5.jpg">
-						  <div class="cityInfoTitle">asd</div>
-						</div>
-						<div class="cityInfo" onmouseover="divOver(this)">
-							<img src="icon/6.jpg">
-							<div class="cityInfoTitle">asd</div>
-						  </div>
-						  <div class="cityInfo" onmouseover="divOver(this)">
-							  <img src="icon/7.jpg">
-							  <div class="cityInfoTitle">asd</div>
-							</div>
-							<div class="cityInfo" onmouseover="divOver(this)">
-								<img src="icon/8.jpg">
-								<div class="cityInfoTitle">asd</div>
-							  </div>
-					  </div>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="DomesticFeature3">
-					<div class="citieslist">
-						<div class="cityInfo" onmouseover="divOver(this)">
-						  <img src="icon/1.jpg">
-						  <div class="cityInfoTitle">asd</div>
-						</div>
-						<div class="cityInfo" onmouseover="divOver(this)">
-							<img src="icon/1.jpg">
-							<div class="cityInfoTitle">asd</div>
-						  </div>
-						  <div class="cityInfo" onmouseover="divOver(this)">
-							  <img src="icon/1.jpg">
-							  <div class="cityInfoTitle">asd</div>
-							</div>
-							<div class="cityInfo" onmouseover="divOver(this)">
-								<img src="icon/1.jpg">
-								<div class="cityInfoTitle">asd</div>
-							  </div>
-					  </div>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="DomesticFeature4">
-					<div class="citieslist">
-						<div class="cityInfo" onmouseover="divOver(this)">
-						  <img src="icon/1.jpg">
-						  <div class="cityInfoTitle">asd</div>
-						</div>
-						<div class="cityInfo" onmouseover="divOver(this)">
-							<img src="icon/1.jpg">
-							<div class="cityInfoTitle">asd</div>
-						  </div>
-						  <div class="cityInfo" onmouseover="divOver(this)">
-							  <img src="icon/1.jpg">
-							  <div class="cityInfoTitle">asd</div>
-							</div>
-							<div class="cityInfo" onmouseover="divOver(this)">
-								<img src="icon/1.jpg">
-								<div class="cityInfoTitle">asd</div>
-							  </div>
-					  </div>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="DomesticFeature5">
-					<div class="citieslist">
-						<div class="cityInfo" onmouseover="divOver(this)">
-						  <img src="icon/1.jpg">
-						  <div class="cityInfoTitle">asd</div>
-						</div>
-						<div class="cityInfo" onmouseover="divOver(this)">
-							<img src="icon/1.jpg">
-							<div class="cityInfoTitle">asd</div>
-						  </div>
-						  <div class="cityInfo" onmouseover="divOver(this)">
-							  <img src="icon/1.jpg">
-							  <div class="cityInfoTitle">asd</div>
-							</div>
-							<div class="cityInfo" onmouseover="divOver(this)">
-								<img src="icon/1.jpg">
-								<div class="cityInfoTitle">asd</div>
-							  </div>
-					  </div>
-				</div>
-			  </div>
 			</div>
-		  </div>
 		</div>
-	  </div>
+	</div>
 	<!-- //citiesInfo -->
 
-<!-- footer -->
+	<!-- footer -->
 	<div class="footer">
 		<div class="container">
 			<div class="agile_footer_copy">
@@ -291,33 +341,33 @@ Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, Son
 			</div>
 		</div>
 	</div>
-<!-- //footer -->
+	<!-- //footer -->
 
 
-<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 	<!-- js -->
-<script src="js/jquery-2.1.4.min.js"></script> 
-<script src="js/JiSlider.js"></script>
-		<script>
-			$(window).load(function () {
-				$('#JiSlider').JiSlider({color: '#fff', start: 3, reverse: true}).addClass('ff')
-			})
-		</script><script type="text/javascript">
+	<script src="js/jquery-2.1.4.min.js"></script> 
+	<script src="js/JiSlider.js"></script>
+	<script>
+		$(window).load(function () {
+			$('#JiSlider').JiSlider({color: '#fff', start: 3, reverse: true}).addClass('ff')
+		})
+	</script><script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36251023-1']);
+		_gaq.push(['_setDomainName', 'jqueryscript.net']);
+		_gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
 
-</script>
-			<script src="js/jarallax.js"></script>
+	</script>
+	<script src="js/jarallax.js"></script>
 	<script src="js/SmoothScroll.min.js"></script>
 	<script type="text/javascript">
 		/* init Jarallax */
@@ -328,28 +378,28 @@ Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, Son
 		})
 	</script>
 
-<!-- start-smoth-scrolling -->
-<!-- //for bootstrap working -->
-<!-- stats -->
+	<!-- start-smoth-scrolling -->
+	<!-- //for bootstrap working -->
+	<!-- stats -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<script src="js/jquery.countup.js"></script>
-		<script>
-			$('.counter').countUp();
-		</script>
-<!-- //stats -->
-<!-- start-smooth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
 		});
-	});
-</script>
-<!-- start-smooth-scrolling -->
-<!-- here stars scrolling icon -->
+	</script>
+	<!-- start-smooth-scrolling -->
+	<!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			/*
@@ -359,44 +409,96 @@ Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, Son
 				scrollSpeed: 1200,
 				easingType: 'linear' 
 				};
-			*/
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
+				*/
+
+				$().UItoTop({ easingType: 'easeOutQuart' });
+
 			});
-	</script>
-<!-- //here ends scrolling icon -->
+		</script>
+		<!-- //here ends scrolling icon -->
 
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-	<script type="text/javascript">
-	$(window).load(function() {
-	$("#flexiselDemo1").flexisel({
-		visibleItems:1,
-		animationSpeed: 1000,
-		autoPlay:false,
-		autoPlaySpeed: 3000,    		
-		pauseOnHover: true,
-		enableResponsiveBreakpoints: true,
-		responsiveBreakpoints: { 
-			portrait: { 
-				changePoint:480,
-				visibleItems: 1
-			}, 
-			landscape: { 
-				changePoint:640,
-				visibleItems:1
-			},
-			tablet: { 
-				changePoint:768,
-				visibleItems: 1
+		<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+		<script type="text/javascript" src="js/daterangepicker.js"></script>
+		<script src="js/date.format.js"></script>
+		<script type="text/javascript" src="js/baguetteBox.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$("#flexiselDemo1").flexisel({
+					visibleItems:1,
+					animationSpeed: 1000,
+					autoPlay:false,
+					autoPlaySpeed: 3000,    		
+					pauseOnHover: true,
+					enableResponsiveBreakpoints: true,
+					responsiveBreakpoints: { 
+						portrait: { 
+							changePoint:480,
+							visibleItems: 1
+						}, 
+						landscape: { 
+							changePoint:640,
+							visibleItems:1
+						},
+						tablet: { 
+							changePoint:768,
+							visibleItems: 1
+						}
+					}
+				});
+				daterangepickerSettings();
+
+			});
+			function daterangepickerSettings(){
+				var myDate = new Date();
+				var startDate = myDate.format('Y/m/d');
+				var endDate = myDate.dateAdd('d',6).format('Y/m/d');
+				var maxDate = myDate.dateAdd('m',1).format('Y/m/d');
+				$("[name='daterange']").daterangepicker({
+					"locale": {
+						"direction": "ltr",
+						"format": "YYYY-MM-DD",
+						"separator": " 到 ",
+						"applyLabel": "选择",
+						"cancelLabel": "取消",
+						"fromLabel" : "开始",
+						"toLabel": "结束",
+						"customRangeLabel" : "自定义",
+						"daysOfWeek": [
+						"日",
+						"一",
+						"二",
+						"三",
+						"四",
+						"五",
+						"六"
+						],
+						"monthNames": [
+						"一月",
+						"二月",
+						"三月",
+						"四月",
+						"五月",
+						"六月",
+						"七月",
+						"八月",
+						"九月",
+						"十月",
+						"十一月",
+						"十二月"
+						],
+						"firstDay": 0
+					},
+					"startDate": startDate,
+					"endDate": endDate,
+					"minDate": startDate,
+					"maxDate": maxDate
+				}, function(start, end, label) {
+				});
 			}
-		}
-	});
-
-	});
-	</script>
-	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+		</script>
+		<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 
 
-</body>
-</html>
+	</body>
+	</html>
