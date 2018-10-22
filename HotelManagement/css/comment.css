@@ -1,0 +1,95 @@
+.bodyStyle{
+    background-color: rgba(241, 240, 240, 0.863);
+}
+.commentDiv{
+    width: 1000px;
+    height: 520px;
+    margin: 30px auto;
+    border: 1px solid red;
+}
+.split{
+    height: 1px;
+    background-color: #ddd;
+}
+.left{
+    width: 300px;
+    float: left;
+    border: 1px solid #ddd;
+}
+.left img{
+    width: 300px;
+    height: 200px;
+    margin-bottom: 10px; 
+}
+.hotelAddr{
+    font-size: 10px;
+    color: #666;
+}
+.right{
+    width: 685px;
+    height: 500px;
+    float: right;
+    background-color: white;
+}
+
+.right table{
+    line-height:38px;
+    margin: 30px 0 0 30px;
+}
+.right_top{
+    padding: 3px 0 0 10px;
+    height: 37px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+.right_top p{
+    color: #666;
+    font-size: 20px;
+}
+.score, .checkInComment{
+    padding-left: 20px;
+}
+.score ul {
+    padding-left: 0;
+    overflow: hidden;
+    float: left;
+}
+.score ul li {
+    float: left;
+    list-style: none;
+    width: 27px;
+    height: 27px;
+    background: url(../images/star.gif)
+}
+.score ul li a {
+    display: block;
+    width: 100%;
+    padding-top: 27px;
+    overflow: hidden;
+}
+.score ul li.light {
+    background-position: 0 -29px;
+}
+.finalScore{
+    color: #ef5734;
+    margin-top: -4px;
+    margin-left: 10px;
+    font-size: 22px;
+    float: left;
+}
+.finalScore p{
+    font-size: 22px;
+}
+#checkInComment{
+    resize: none;
+    margin-top: 10px;
+    line-height: 20px;
+}
+.commentBtnDiv{
+    width: 84px;
+    margin: 80px auto 0 auto;
+}
+.commentBtn{
+    color: white;
+    background-color: #ef5734;
+}

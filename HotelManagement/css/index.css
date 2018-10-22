@@ -37,7 +37,7 @@
 .citieslist{
   width: 1100px;
 }
-.cityInfo{
+.domestic_cityInfo, .foregin_cityInfo{
   /* background-color: yellow; */
   width: 243.5px;
   height: 193.5px;

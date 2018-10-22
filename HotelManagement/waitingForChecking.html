@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>去 边 度 - 支付</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom -->
+<link href="css/index.css" rel="stylesheet"> 
+<link rel="stylesheet" href="css/waitingForChecking.css">
+<!-- //custom-theme -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //font-awesome-icons -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!-- header -->
+<div class="banner-top">
+	<div class="w3_navigation">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<h1><a class="navbar-brand" href="index.html"> 去 边 度 </a></h1>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+<!-- //header -->
+<div class="splitLine"></div><br>
+<div class="info">
+        <div class="left">
+                <p class="hotelName">北京凤凰大厦</p>
+                <p class="paymentOrderNo">订单号:447926070</p>
+                <p class="roomInfo">欧式斜顶单人间 |7晚|1间（无早）</p>
+            </div>
+            <div class="right">
+                <p class="charge">支付金额：<b id="charge">￥500</b></p>
+            </div><br><br>
+    <h2>等待商家审核...</h2>
+    <button type="button" class="backBtn btn" onclick="back()">返回首页</button>
+</div>
+
+<!-- footer -->
+<div class="footer">
+		<div class="container">
+			<div class="agile_footer_copy">
+				<div class="w3agile_footer_grids">
+					<div class="col-md-4 w3agile_footer_grid">
+						<h3>关于我们</h3>
+						<p>???<span>???</span><span>???</span></p>
+					</div>
+					<div class="col-md-4 w3agile_footer_grid">
+						<h3>联系方式</h3>
+						<ul>
+							<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>D G U T</li>
+							<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>666666666@qq.com</li>
+							<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+135 8888 8888</li>
+						</ul>
+					</div>
+					<div class="col-md-4 w3agile_footer_grid w3agile_footer_grid1">
+						<h3>导航</h3>
+						<ul>
+							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="index.html">首页</a></li>
+							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="domesticSearch.html">国内酒店</a></li>
+							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="foreignSearch.html">国际酒店</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->
+
+<!-- js -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<script src="js/jquery.params.js"></script>
+<script>
+	var price;
+	var totalPrice;
+	var orderId = $.query.get("orderId");
+    console.log(orderId);
+	// $('.paymentOrderNo').text('订单号:'+orderId);
+	$(document).ready(function(){
+		//获取酒店的基本信息
+		$.post("http://120.79.73.26:8081/order/selectOrderByOrderId",
+		{
+			orderId:orderId
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				//left
+				console.log(data.content);
+
+				$('.hotelName').text(data.content.hotelName);
+				$('#charge').text('￥'+data.content.totalPrice);
+				var breakfast;
+				if(data.content.breakfast){
+					breakfast = '(无早)';
+				}else{
+					breakfast = '(含早)';
+				}
+				var roomInfo = data.content.roomCategory+' | '+ data.content.livingDay+'晚 | '+data.content.num+'间'+' | '+breakfast;
+				$('.roomInfo').text(roomInfo);
+			}
+		});
+	});
+    function back(){
+        window.location.href='index.html';
+    }
+</script>
+<!-- //js -->
+</body>
+</html>

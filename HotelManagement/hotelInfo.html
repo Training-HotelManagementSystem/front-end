@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>去 边 度 - 搜索</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom -->
+<link href="css/index.css" rel="stylesheet"> 
+<link href="css/hotelInfo.css" rel="stylesheet"> 
+<!-- //custom-theme -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //font-awesome-icons -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!-- header -->
+<div class="banner-top">
+	<div class="header">
+		<div class="container">
+			<div class="header-left">
+				<div class="agileinfo-phone">
+					<p><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> +135 8888 8888</p>
+				</div>
+				<div class="agileinfo-phone agileinfo-map">
+					<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>  D G U T</p>
+				</div>
+				<div class="login">
+					<a href="userLogin.html">登 录</a> / <a href="userRegister.html">注 册</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="w3_navigation">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<h1><a class="navbar-brand" href="index.html"> 去 边 度 </a></h1>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					<nav class="menu menu--iris">
+						<ul class="nav navbar-nav menu__list">
+							<li class="menu__itemt"><a href="index.html" class="menu__link">首页</a></li>
+							<li class="menu__item"><a href="domesticSearch.html" class="menu__link">国内酒店</a></li>
+							<li class="menu__item"><a href="foreignSearch.html" class="menu__link">国际酒店</a></li>
+							<li class="menu__item"><a href="" class=""> </a></li>
+						</ul>
+					</nav>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+<!-- //header -->
+<div class="splitLine"></div><br>
+<!-- hotelName such on -->
+<div class="hotelWithNameAndAddr">
+	<h2 class="hotelName">酒店</h2>
+	<p class="hotelAddr">地址</p>
+</div>
+<!-- //hotelName such on -->
+<!-- img of hotel -->
+<div class="hotelImg">
+	<div class="img_left">
+		<img class="pic1" src="#" alt="">
+	</div>
+	<div class="img_right">
+		<img class="pic2" src="#" alt="">
+		<img class="pic3" src="#" alt="">
+		<img class="pic4" src="#" alt="">
+		<div>
+			<img class="pic5" src="#" alt="">
+			<img class="pic6" src="#" alt="">
+			<img class="pic7" src="#" alt="">
+		</div>
+	</div>
+	<div class="hotel_summary">
+		<p class="hotelScore"></p>/5分
+		<div class="minPrice">￥<p>500</p>起</div>
+		<div class="moveto_comment"><a href="#comment"></a></div>
+	</div>
+</div><br><br>
+<div id="fixPara">
+	<table class="infoTab"> 
+		<tr>
+			<td>
+				<a class="flag hq_hy" onclick="dj(this);" href="#reserve">&nbsp;&nbsp;房型预定&nbsp;&nbsp;</a>
+			</td>
+			<td>
+				<a class="flag hq_zsh" onclick="dj(this);" href="#facilityInfo">&nbsp;&nbsp;酒店信息&nbsp;&nbsp;</a>
+			</td>
+			<td>
+				<a class="flag hq_hb" onclick="dj(this);" href="#comment">&nbsp;&nbsp;点&nbsp;&nbsp;评&nbsp;&nbsp;</a>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="roomsInfo">
+	<div id="reserve"></div>
+	<!-- <div class="room">
+        <img src="images/g1.jpg" alt="">
+        <div class="left_info">
+            <p class="roomType">单人间</p><br>
+            <p class="roomInfo">房间20㎡ | 单人床 | 可住：2人 | 楼层：南楼1层-3层 | 包含宽带</p>
+        </div>
+        <div class="right_info">
+            <p class="roomPrice">￥500</p>
+			<button type="button" class="bookBtn btn" onclick="bookClick()">预订</button>
+        </div>
+    </div> -->
+</div>
+<div style="clear:both"></div><br><br><br>
+<div id="facilityInfo">
+	<h3>酒 店 信 息</h3>
+	<table>
+		<tbody>
+		<tr>
+			<td colspan="3" height="100">设备图标</td>
+		</tr>
+		<tr>
+			<td width="10%" height="40">酒店电话</td>
+			<td colspan="2" class="phone"></td>
+		</tr>
+		<tr>
+			<td width="10%" height="40">入离时间</td>
+			<td colspan="2" class="comeLeftTime"></td>
+		</tr>
+		<tr>
+			<td width="10%" height="40">开业时间</td>
+			<td colspan="2" class="openTime"></td>
+		</tr>
+		<tr>
+			<td width="10%" height="40">预定须知</td>
+			<td colspan="2" class="bookingInformation"></td>
+		</tr>
+		<tr>
+			<td width="10%" height="40">酒店设施</td>
+			<td colspan="2" class="hotelService"></td>
+		</tr>
+		<tr>
+			<td width="10%">酒店简介</td>
+			<td colspan="2" class="introduction"></td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<div class="comment">
+	<h3>点 评</h3>
+	<div id="comment"></div>
+	<!-- <div class="comment_info">
+        <div class="avatar">
+            <img src="images/g1.jpg" alt="">
+            <p>用户名</p>
+        </div>
+        <div class="left_info">
+            <p>评分</p>
+            <p>评论</p>
+        </div>
+    </div> -->
+</div>
+
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/paging.js"></script> 
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<script>
+	function pagingSettings(totalPage, currPage){
+		$('#page').createpagination({
+			total_page: totalPage,
+			current_page: currPage,
+			onclick: function(number){
+				
+			}
+		});
+	}
+</script>
+<script>
+    window.onload=
+        function(){
+            var oDiv = document.getElementById("fixPara"),
+                H = 0,
+                Y = oDiv        
+            while (Y) {
+                H += Y.offsetTop; 
+                Y = Y.offsetParent;
+            }
+            window.onscroll = function()
+            {
+                var s = document.body.scrollTop || document.documentElement.scrollTop
+                if(s>H) {
+                    oDiv.style = "position:fixed;top:0;width:100%;"
+                } else {
+                    oDiv.style = ""
+                }
+            }
+        }
+</script>
+<script type="text/javascript">
+    $(function () {
+    //加载事件
+        var collection = $(".flag");
+        $.each(collection, function () {
+            $(this).addClass("start");
+        });
+    });
+    //单击事件
+    function dj(dom) {
+        var collection = $(".flag");
+        $.each(collection, function () {
+            $(this).removeClass("end");
+            $(this).addClass("start");
+        });
+        $(dom).removeClass("start");
+        $(dom).addClass("end");
+    }
+</script>
+<script>
+	$(document).ready(function(){
+		var hotelId = 14;
+		//获取酒店的基本信息
+		$.post("http://120.79.73.26:8081/hotel/selectBaseByHotelId",
+		{
+			id:hotelId
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				$('.hotelName').text(data.content.name);
+				$('.hotelAddr').text(data.content.address);
+				for(var i = 1; i <= 7; i ++){
+					var imgURL = data.content.hotelPhotos[i].url;
+					$('.pic'+i).attr("src", imgURL);
+				}
+				$('.minPrice').html("￥<p>"+data.content.minPrice+"</p>起");
+				var score;
+				if(data.content.avgGrade == null){
+					score = 0;
+				} else{
+					score = data.content.avgGrade.toFixed(2);
+				}
+				$('.hotelScore').text(score);
+				$('.moveto_comment').html("<a href=\"#comment\">前往查看" + data.content.totalCommnet + "条评论》</a>");
+			}
+		});
+		//获取房间信息
+		var checkIn = "10/25/2018";
+		var checkOut = "10/26/2018";
+		var roomId_list;
+		$.post("http://120.79.73.26:8081/roomCategory/selectRoomCategoryByHotelId",
+		{
+			hotelId:hotelId,
+			checkIn:checkIn,
+			checkOut:checkOut
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				for(var i = 0; i < data.content.length; i ++){
+					var name = data.content[i].name;
+					var imgURL = data.content[i].photos;
+					var price = data.content[i].price;
+					var availableRoomNum = data.content[i].availableRoomNum;
+					var isBreakfast
+					if(data.content[i].breakfast == 0){
+						isBreakfast = "不含早餐";
+					} else{
+						isBreakfast = "包含早餐";
+					}
+					var info = data.content[i].area + " | " + data.content[i].bedManagement + " | 可住:" +
+					 data.content[i].capacity + "人" + " | 楼层:" + data.content[i].floor + " | " + isBreakfast;
+					var roomDiv = "<div class=\"room\"><img src=\"" + imgURL + "\" alt=\"\"><div class=\"left_info\">"+
+            			"<p class=\"roomType\">" + name + "</p><br><p class=\"roomInfo\">" + info + "</p></div>"+
+        				"<div class=\"right_info\"><p class=\"roomPrice\">￥" + price + "</p><button type=\"button\" class=\"bookBtn btn\" onclick=\"bookClick()\">预订</button></div></div>";
+					$(".roomsInfo").append(roomDiv);
+					
+					roomId_list = document.getElementsByClassName('bookBtn');
+					roomId_list[i].roomId = data.content[i].id;
+					roomId_list[i].onclick=function(){
+						window.location.href='paymentOrder.html?roomId='+this.roomId+'&checkIn='+checkIn+'&checkOut='+checkOut;
+					}
+				}
+			}
+		});
+		//获取酒店的设备信息
+		$.post("http://120.79.73.26:8081/hotel/selectInfoByHotelId",
+		{
+			id:hotelId
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				// $('.hotelScore').text(data.content.hotelFacility);
+				$('.phone').text(data.content.phone);
+				$('.openTime').text(data.content.openTime);
+				$('.comeLeftTime').text(data.content.comeLeftTime);
+				$('.bookingInformation').text(data.content.bookingInformation);
+				$('.hotelService').text(data.content.hotelService);
+				$('.introduction').text(data.content.introduction);
+			}
+		});
+		//获取评论
+		var pageNum = 0;
+		$.post("http://120.79.73.26:8081/comment/selectCommentByHotelId",
+		{
+			hotelId :hotelId,
+			pn:pageNum
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				console.log(data.content.list);
+				var commentDiv = "<div class=\"comment_info\"><div class=\"avatar\"><img src=\"images/g1.jpg\" alt=\"\"><p>用户名</p>"+
+        			"</div><div class=\"left_info\"><p>评分</p><p>评论</p></div></div>";
+				// $(".comment").append(commentDiv);
+				var page = "<div id=\"page\"></div>";
+				$(".comment").append(page);
+				pagingSettings(10,1);
+				// $('.hotelScore').text(data.content.hotelFacility);
+				// $('.phone').text(data.content.phone);
+				// $('.openTime').text(data.content.openTime);
+				// $('.comeLeftTime').text(data.content.comeLeftTime);
+				// $('.bookingInformation').text(data.content.bookingInformation);
+				// $('.hotelService').text(data.content.hotelService);
+				// $('.introduction').text(data.content.introduction);
+			}
+		});
+		
+	});
+</script>
+<!-- //js -->
+</body>
+</html>

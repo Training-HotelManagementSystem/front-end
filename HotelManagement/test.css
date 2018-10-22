@@ -1,0 +1,35 @@
+img{
+    width: 120px;
+    height: 100px;
+    float: left;
+}
+.room{
+    border: 1px solid black;
+    width: 800px;
+    float: left;
+}
+.left_info{
+    background-color: red;
+    float: left;
+    margin-left: 10px;
+}
+.right_info{
+    background-color: yellow;
+    float: right;
+    margin-right: 10px;
+}
+.comment_info{
+    border: 1px solid black;
+    width: 800px;
+    float: left;
+}
+.avatar{
+    width: 120px;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+}
+.avatar p{
+    margin: 0 auto;
+    color: red;
+}

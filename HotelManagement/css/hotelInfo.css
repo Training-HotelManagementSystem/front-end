@@ -1,0 +1,169 @@
+/* 酒店信息概况 */
+.hotelWithNameAndAddr{
+    width: 1270px;
+    margin: 0 auto 30px auto;
+}
+.hotelAddr{
+    margin-top: 2px;
+    font-size: 12px;
+    color: #444;
+}
+.hotelImg{
+    width: 1270px;
+    height: 300px;
+    margin: 0 auto 30px auto;
+}
+.img_left img{
+    width: 400px;
+    height: 300px;
+    margin-right:5px; 
+    float: left;
+}
+.img_right{
+    float: left;
+}
+.img_right img{
+    width: 200px;
+    height: 148px;
+    margin-bottom: 3px;
+}
+.hotel_summary{
+    width: 250px;
+    height: 300px;
+    margin-left: 3px;
+    padding-left: 10px;
+    float: left;
+}
+.hotel_summary p{
+    display: inline;
+    font-size: 36px;
+    color: #ef5734;
+}
+.minPrice{
+    float: right;
+    color: #ef5734;
+}
+.moveto_comment{
+    font-size: 13px;
+    float: right;
+}
+.moveto_comment a{
+    color: #222;
+}
+.moveto_comment a:hover{
+    color: #222;
+    text-decoration: underline;
+}
+
+/* 信息TAB */
+#fixPara{
+    clear: both;
+    width: 1270px;
+    height: 28px;
+    margin: 0 auto 20px auto;
+    background-color:#ef5734;
+}
+.infoTab a{
+    font-size: 19px;
+}
+.hq_hy:hover, .hq_zsh:hover, .hq_hb:hover{
+    color: #fff;
+    background: #bb482e;
+    border: none;
+}
+.start{
+    cursor: pointer;
+    color: #fff;
+}
+.end{
+    cursor: pointer;
+    color: #555;
+    background: #fff;
+    border: none;
+}
+
+/* 房间信息 */
+.roomsInfo{
+    width: 1270px;
+    margin: 0 auto 30px auto;
+}
+.room{
+    margin-bottom: 2px;
+    border:1px solid #ddd;
+    width: 1050px;
+    float: left;
+}
+.room img{
+    width: 120px;
+    height: 100px;
+    float: left;
+}
+.left_info{
+    margin-top: 15px;
+    float: left;
+    margin-left: 10px;
+}
+.right_info{
+    margin-top: 32px;
+    width: 280px;
+    float: right;
+    margin-right: 15px;
+}
+.roomType{
+    color: #ef5734;
+    font-size: 22px;
+}
+.roomInfo{
+    font-size: 12px;
+}
+.roomPrice{
+    font-size: 25px;
+    color: #ef5734;
+    float: left;
+}
+.bookBtn{
+    margin-top: 1px;
+    float: right;
+    color: white;
+    background-color: #ef5734;
+}
+
+/* 设备信息 */
+#facilityInfo{
+    width: 1270px;
+    margin: 0 auto 30px auto;
+    /* background-color: yellow; */
+}
+#facilityInfo table{
+    width: 800px;
+    height: 400px;
+    color: #666;
+    font-size: 12px;
+}
+
+/* 评论 */
+.comment{
+    width: 1270px;
+    margin: 0 auto 30px auto;
+    background-color: yellow;
+}
+.comment_info{
+    border: 1px solid black;
+    width: 1050px;
+    float: left;
+}
+.comment_info img{
+    width: 120px;
+    height: 100px;
+    float: left;
+}
+.avatar{
+    width: 120px;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+}
+.avatar p{
+    margin: 0 auto;
+    color: red;
+}

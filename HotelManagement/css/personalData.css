@@ -1,0 +1,32 @@
+.bodyStyle{
+    background-color: #ccc;
+}
+.personalInfo{
+    width: 700px;
+    height: 500px;
+    margin: 20px auto 50px auto;
+    background-color: #fff;
+    border: 1px solid #aaa;
+}
+.info{
+    width: 300px;
+    margin: 100px auto;
+}
+table{
+    color: #444;
+    line-height: 35px;
+}
+.username, .phoneNumber, .email{
+    padding-left: 20px;
+}
+#username, #email{
+    height: 27px;
+}
+.saveBtnDiv{
+    margin: 0 auto;
+    width: 84px;
+}
+.saveBtn{
+    background-color: #ef5734;
+    color: white;
+}

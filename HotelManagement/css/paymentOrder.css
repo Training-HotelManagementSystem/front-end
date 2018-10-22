@@ -1,0 +1,104 @@
+input{
+    height: 25px;
+    border: 1px solid #ccc;
+}
+.bodyStyle{
+    background-color: rgba(245, 243, 243, 0.712);
+}
+.paymentOrder{
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+}
+.split{
+    height: 1px;
+    background-color: #ddd;
+}
+.left{
+    width: 300px;
+    float: left;
+}
+.left p{
+    margin: 3px;
+}
+.left img{
+    width: 300px;
+    height: 200px;
+    margin-bottom: 10px; 
+}
+.hotelAddr{
+    font-size: 10px;
+    color: #666;
+}
+.hotelInfo table{
+    color: #666;
+    font-size: 13px;
+    line-height: 27px;
+    margin-top: 20px;
+}
+.bedManagement, .area, .breakfast, .capacity, .floor{
+    padding-left: 10px;
+    color: #333;
+}
+
+.right{
+    width: 685px;
+    height: 530px;
+    float: right;
+    background-color: white;
+}
+.right table{
+    color: #333;
+    font-size: 14px;
+    line-height: 45px;
+    margin-top: 20px;
+}
+.info{
+    width: 600px;
+    margin: 0 auto;
+}
+.bookInfo{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.checkInInfo{
+    margin-top: 25px;
+}
+.time, .roomNum, .charge, .name, .phone, .email{
+    padding-left: 30px;
+}
+.roomNumDiv a{
+    padding: 2px 8px;
+    color: #777;
+    border: 1px solid #ccc;
+}
+.charge{
+    color: #ef5734;
+}
+.bookBtnDiv{
+    margin-top: 37px;
+    width: 260px;
+    float: right;
+}
+.bookBtnDiv p{
+    display: inline;
+}
+.chargeP{
+    float: left;
+    margin-top: 11px;
+}
+.roomCharge{
+    font-size: 25px;
+    color: #ef5734;
+    float: left;
+}
+.bookBtn{
+    margin-top: 1px;
+    float: right;
+    color: white;
+    background-color: #ef5734;
+}
+#roomNum{
+    text-align: center;
+    width: 40px;
+}

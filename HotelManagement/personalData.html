@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>去 边 度 - 支付</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom -->
+<link href="css/index.css" rel="stylesheet"> 
+<link rel="stylesheet" href="css/personalData.css">
+<!-- //custom-theme -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //font-awesome-icons -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+</head>
+<body class="bodyStyle">
+<!-- header -->
+<div class="banner-top">
+        <div class="w3_navigation">
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header navbar-left">
+                        <h1><a class="navbar-brand" href="index.html"> 去 边 度 </a></h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                        <nav class="menu menu--iris">
+                            <ul class="nav navbar-nav menu__list">
+                                <li class="menu__itemt"><a href="index.html" class="menu__link">首页</a></li>
+                                <li class="menu__item"><a href="domesticSearch.html" class="menu__link">国内酒店</a></li>
+                                <li class="menu__item"><a href="foreignSearch.html" class="menu__link">国际酒店</a></li>
+                                <li class="dropdown menu__item menu__item--current">
+                                    <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">我<b class="caret"></b></a>
+                                    <ul class="dropdown-menu agile_short_dropdown">
+                                        <li><a href="myHotelOrder.html">酒店订单</a></li>
+                                        <li><a href="myComment.html">酒店点评</a></li>
+                                        <li><a href="#">个人资料</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+<!-- //header -->
+<br>
+
+<!-- personalInfo -->
+<div class="personalInfo">
+    <div class="info">
+        <h4>基本信息</h4><br>
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td class="username"><input type="text" id="username"> </td>
+            </tr>
+            <tr>
+                <td>手机</td>
+                <td class="phoneNumber">..</td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td class="email"><input type="text" id="email"> </td>
+            </tr>
+        </table>
+        <br><br><br>
+        <div class="saveBtnDiv">
+            <button type="button" class="saveBtn btn">保存修改</button>
+        </div>
+    </div>
+</div>
+<!-- //personalInfo -->
+
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="agile_footer_copy">
+            <div class="w3agile_footer_grids">
+                <div class="col-md-4 w3agile_footer_grid">
+                    <h3>关于我们</h3>
+                    <p>???<span>???</span><span>???</span></p>
+                </div>
+                <div class="col-md-4 w3agile_footer_grid">
+                    <h3>联系方式</h3>
+                    <ul>
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>D G U T</li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>666666666@qq.com</li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+135 8888 8888</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 w3agile_footer_grid w3agile_footer_grid1">
+                    <h3>导航</h3>
+                    <ul>
+                        <li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="index.html">首页</a></li>
+                        <li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="domesticSearch.html">国内酒店</a></li>
+                        <li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="foreignSearch.html">国际酒店</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //footer -->
+
+<!-- js -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<script src="js/jquery.params.js"></script>
+<script>
+	var price;
+	var totalPrice;
+	$(document).ready(function(){
+		var roomId = $.query.get("roomId");
+		var checkIn = $.query.get("checkIn");
+		var checkOut = $.query.get("checkOut");
+		//获取酒店的基本信息
+		$.post("http://120.79.73.26:8081/roomCategory/selectRoomCategoryById",
+		{
+			checkIn:checkIn,
+			checkOut:checkOut,
+			roomCategoryId:roomId
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				//left
+				console.log(data.content);
+				$('.hotelImg').attr("src", data.content.hotel.photos);
+			}
+		});
+	});
+</script>
+<!-- //js -->
+</body>
+</html>

@@ -1,0 +1,30 @@
+.info{
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    padding-top: 50px;
+    text-align: center;
+}
+.hotelName{
+    font-size: 26px;
+    color: #333;
+}
+.paymentOrderNo{
+    margin-top: 4px;
+    margin-left: 20px;
+    color: #777;
+    font-size: 12px;
+}
+.roomInfo{
+    color: #666;
+    font-size: 14px;
+}
+#charge{
+    color: #ef5734;
+    font-size: 25px;
+}
+.backBtn{
+    margin-top: 120px;
+    background-color: #ef5734;
+    color: white;
+}

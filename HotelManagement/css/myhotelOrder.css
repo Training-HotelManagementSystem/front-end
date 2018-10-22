@@ -1,0 +1,60 @@
+.info{
+    margin: 0 auto;
+    width: 1000px;
+}
+.orderInfo{
+    border: 1px solid #ddd;
+    line-height: 35px;
+}
+.info_top{
+    /* border: 1px solid red; */
+    height: 40px;
+    background-color: rgba(250, 245, 245, 0.842);
+}
+.info_top p{
+    float: left;
+}
+.orderNo{
+    margin-left: 10px;
+    margin-right: 80px;
+}
+.orderImg{
+    width:150px;
+    float: left;
+    margin-left: 10px;
+}
+.left{
+    float: left;
+    margin-left: 10px;
+}
+.hotelName{
+    font-size: 20px;
+    color: #333;
+}
+.hotelAddr{
+    /* font-size: 13px; */
+    color: #777;
+}
+.tel{
+    color: #333;
+}
+.middle{
+    float: left;
+    margin-left: 60px;
+}
+.right{
+    float: right;
+}
+.charge{
+   color: #ef5734
+}
+.orderSatus{
+   color: #ef5734;
+   font-size: 20px;
+   margin-right: 20px;
+}
+.evaluateBtn{
+    margin-top: 20px;
+    background-color: #ef5734;
+    color: white;
+}
