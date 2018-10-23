@@ -1,0 +1,92 @@
+body {
+	background-color: white;
+}
+div[name=list-title]{
+	margin-top: 20px;
+}
+div[name=search-info]{
+	margin-top: 20px;
+}
+div[name=search-info] form{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #ffefe9;
+	border-top: 2px solid #ef5734;
+}
+div[name=search-info] form input[name=daterange]{
+	width: 210px;
+}
+div[name=search-info] form input[type=submit]{
+	background: no-repeat;
+	border: 0;
+}
+div[name=filter]{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: solid;
+	border-color: #dddddd;
+}
+div[name=order-info]{
+	margin-top: 20px;
+}
+.w3_navigation {
+	border-bottom: solid;
+	border-color: #ef5734;
+}
+ul[name=order]{
+	background: #ef5734;
+	padding-left: 5px;
+	padding-left: 5px;
+}
+ul[name=order] a{
+	color: white;
+}
+ul[name=order] li{
+	margin-left: 5px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+	color: #ef5734;
+    background-color: white;
+    font-weight: bold;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+	color: #ef5734;
+    background-color: white;
+}
+.nav-pills > li > a{
+	border-radius: 0;
+}
+div[name=filter] > div{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0;
+}
+div[name=filter] > div > div[class=col-md-1]{
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #ffefe9;
+}
+div[name=filter] > div > div[class=col-md-11]{
+	border-bottom: dotted;
+	border-color: #d3d3d3s;
+	padding-bottom: 7px;
+	border-width: 0.5px;
+}
+div[id=hotel-list] > div > div[name=second_div] > div[name=name_div] > a:hover{
+	color: red;
+}
+div[id=hotel-list] > div > div[name=second_div] > div[name=name_div] > a{
+	font-size: 20px;
+}
+input[type="submit"], a, .nbs-flexisel-nav-left, .nbs-flexisel-nav-right{
+	transition: default;
+	-webkit-transition: default;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color: #ef5734;
+    border-color: #ef5734;
+}
+.pagination > li > a, .pagination > li > span{
+	color: #ef5734;
+}

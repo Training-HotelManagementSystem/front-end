@@ -1,25 +1,47 @@
 .bodyStyle{
     background-color: rgba(241, 240, 240, 0.863);
 }
+.split{
+    float: right;
+    background-color: #111;
+    height: 1px;
+}
+.split2{
+    background-color: #aaa;
+    height: 1px;
+}
 .commentDiv{
     width: 1000px;
-    height: 520px;
+    height: 570px;
     margin: 30px auto;
-    border: 1px solid red;
-}
-.split{
-    height: 1px;
-    background-color: #ddd;
 }
 .left{
     width: 300px;
     float: left;
-    border: 1px solid #ddd;
 }
 .left img{
-    width: 300px;
+    width: 290px;
     height: 200px;
     margin-bottom: 10px; 
+}
+.hotComment{
+    word-wrap:break-word;
+    word-break:break-all;
+    color: #555;
+}
+.hotComment table{
+    margin-bottom: 10px;
+}
+.hotComment p{
+    font-size: 12px;
+}
+.hotComment td{
+    vertical-align: top;
+}
+.hotComment img{
+    width: 25px;
+    height: 25px;
+    float: left;
 }
 .hotelAddr{
     font-size: 10px;
@@ -27,7 +49,7 @@
 }
 .right{
     width: 685px;
-    height: 500px;
+    height: 550px;
     float: right;
     background-color: white;
 }
@@ -92,4 +114,20 @@
 .commentBtn{
     color: white;
     background-color: #ef5734;
+}
+#result img{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    float: left;
+}
+.uploadImg{
+    margin: 0 auto;
+    width: 600px;
+}
+.resetChooseBtn{
+    height: 27px;
+    position: relative;
+    top: -30px;
+    left: 470px;
 }

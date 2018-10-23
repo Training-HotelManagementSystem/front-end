@@ -13,8 +13,6 @@
 <!-- //custom-theme -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //font-awesome-icons -->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 <body class="bodyStyle">
 <!-- header -->
@@ -49,6 +47,18 @@
         <p class="hotelAddr"></p> 
         <p class="roomType"></p><br>
         <div class="split"></div>
+        <div class="hotComment">
+            <!-- <table>
+                <tr>
+                    <td><img src="images/good.png" alt=""></td>
+                    <td>
+                        <p class="hotComment_content"></p>
+                        <div class="split2"></div>
+                        <p class="hotComment_time"></p>
+                    </td>
+                </tr>
+            </table> -->
+        </div>
     </div>
     <div class="right">
         <div class="right_top"><p>我要写点评</p> </div>
@@ -70,9 +80,17 @@
                 <td valign="top">入住点评</td>
                 <td class="checkInComment"><textarea name="checkInComment" id="checkInComment" cols="60" rows="8"></textarea> </td>
             </tr>
-        </table>
+		</table>
+		<br>
+        <div class="uploadImg">
+            <label>请选择图像文件(最多6张)：</label> 
+            <input type="file" id="file_input" multiple/> 
+            <button class="resetChooseBtn" onclick="removePic()">重新选择</button>
+            <div id="comment_pic"></div>
+        </div>
+		
         <div class="commentBtnDiv">
-            <button type="button" class="commentBtn btn">发表点评</button>
+            <button type="button" class="commentBtn btn" onclick="submitComment()">发表点评</button>
         </div>
     </div>
 </div>
@@ -112,10 +130,11 @@
 <!-- js -->
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap-3.1.1.min.js"></script>
-
+<script src="js/jquery.params.js"></script>
 <script>
 	$(document).ready(function(){
 		var hotelId = 14;
+        var orderId= $.query.get("orderId");
 		//获取酒店的基本信息
 		$.post("http://120.79.73.26:8081/hotel/selectBaseByHotelId",
 		{
@@ -124,26 +143,56 @@
 		function(data,status){
 			if(data["code"] == 0){
 				$('.hotelName').text(data.content.name);
+				$('.hotelName').text(data.content.name);
 				$('.hotelAddr').text(data.content.address);
-				for(var i = 1; i <= 7; i ++){
-					var imgURL = data.content.hotelPhotos[i].url;
-					$('.pic'+i).attr("src", imgURL);
-				}
-				$('.minPrice').html("￥<p>"+data.content.minPrice+"</p>起");
-				var score;
-				if(data.content.avgGrade == null){
-					score = 0;
-				} else{
-					score = data.content.avgGrade.toFixed(2);
-				}
-				$('.hotelScore').text(score);
-				$('.moveto_comment').html("<a href=\"#comment\">前往查看" + data.content.totalCommnet + "条评论》</a>");
+				$('.hotelImg').attr("src", data.content.hotelPhotos[0].url);
 			}
 		});
-		
+
+        //获取热门评论
+		$.ajax({ 
+            url : 'http://120.79.73.26:8081/comment/selectEssencyByOrderId', 
+            type : 'post', 
+            beforeSend: function(xhr) {
+				var storage = window.localStorage;
+				var token = storage.token;
+				xhr.setRequestHeader("Authorization", token);
+			},
+            data:{
+                "orderId":orderId
+            },
+            success : function(data){ 
+                console.log(data);
+                for(var i = 0; i < data.content.comments.length; i ++){
+                    if(i < 3){
+                        var feeling = data.content.comments[i].feeling;
+                        var time = data.content.comments[i].publishdate.substring(0, 10);
+                        var hotCommentDiv = "<table>"+
+                                                "<tr>"+
+                                                    "<td><img src=\"images/good.png\" alt=\"\"></td>"+
+                                                    "<td>"+
+                                                        "<p class=\"hotComment_content\">"+feeling+"</p>"+
+                                                        "<div class=\"split2\"></div>"+
+                                                        "<p class=\"hotComment_time\">"+time+"</p>"+
+                                                    "</td>"+
+                                                "</tr>"+
+                                            "</table>";
+                        $(".hotComment").append(hotCommentDiv);
+                    }
+                }
+            },
+            error: function(err) {
+				console.log("asderror:"+err);
+			},
+			complete: function(XMLHttpRequest, status) {　
+			}
+        }) ;
 	});
 </script>
 <script>
+    var formData = new FormData();
+    var imgFile = new Array();
+
     var num=finalnum = tempnum= 0;
     var lis = document.getElementsByTagName("li");
     //num:传入点亮星星的个数
@@ -169,6 +218,109 @@
     }
     function scoreSetting(score){
         $('.finalScore').text(score);
+    }
+
+    // 上传图片
+    var tmp = 0;
+	$(document).ready(function(){
+        var input = document.getElementById("file_input"); 
+        var result,div; 
+  
+        if(typeof FileReader==='undefined'){ 
+            result.innerHTML = "抱歉，你的浏览器不支持 FileReader"; 
+            input.setAttribute('disabled','disabled'); 
+        }else{ 
+            input.addEventListener('change',readFile,false); 
+        }
+        function readFile(){ 
+            readFile2(this.files.length);
+            for(var i=0; i < this.files.length; i++){ 
+                if (!input['value'].match(/.jpg|.gif|.png|.bmp/i)){
+                    return alert("上传的图片格式不正确，请重新选择");　　　　　　　　　
+				} 
+                if(i < 5){
+                    var reader = new FileReader(); 
+                    reader.readAsDataURL(this.files[i]); 
+                    reader.onload = function(e){ 
+                        result = '<div id="result"><img src="'+this.result+'" alt=""/></div>'; 
+                        div = document.createElement('div'); 
+                        div.innerHTML = result; 
+                        document.getElementById('comment_pic').appendChild(div); 
+                    } 
+                }
+        	} 
+            if(tmp == 0){
+                $(".commentDiv").css("height", $(".commentDiv").height()+90);
+                $(".right").css("height", $(".right").height()+90);
+                tmp += 1;
+            }
+    	} 
+		function readFile2(num){ 
+            var img_file = document.getElementById("file_input");
+            // for(var i = 0; i < num; i ++){
+            //     var fileObj = img_file.files[i];
+            //     imgFile[i] = fileObj;
+            //     formData.append("multipartFiles", imgFile[i]);
+            // }
+            for(var i = 0; i < num; i ++){
+                var fileObj = img_file.files[i];
+                //imgFile[i] = fileObj;
+                formData.append("multipartFiles",img_file.files[i]);
+            }
+		}   		
+		removePic = function(){
+			$('#comment_pic').empty();
+            formData.append("multipartFiles", "");
+            if(tmp == 1){
+                $(".commentDiv").css("height", $(".commentDiv").height()-90);
+                $(".right").css("height", $(".right").height()-90);
+                tmp -= 1;
+            }
+		}
+    });
+
+    //提交点评
+    function submitComment(){
+        var score = Number($('.finalScore').text());
+        var commentContent = $('#checkInComment').val();
+        var userId = 1;
+        var orderId= $.query.get("orderId");
+        formData.append("grade", score);
+        formData.append("feeling", commentContent);
+        formData.append("userId", userId);
+        formData.append("orderId", orderId);
+        $.ajax({ 
+            url : 'http://120.79.73.26:8081/comment/insertComment', 
+            type : 'post', 
+            
+            
+            processData : false,   // 告诉jQuery不要去设置Content-Type请求头
+            contentType : false,
+            async : false,
+            beforeSend: function(xhr) {
+				var storage = window.localStorage;
+				var token = storage.token;
+				xhr.setRequestHeader("Authorization", token);
+			},
+            traditional: true,
+            data:formData,
+            // data : {
+            //     "grade":score,
+            //     "feeling":commentContent,
+            //     "userId":userId,
+            //     "orderId":orderId,
+            //     "multipartFiles":formData
+            // }, 
+            
+            success : function(data){ 
+                console.log(data) 
+            },
+            error: function(err) {
+				console.log("error:"+err);
+			},
+			complete: function(XMLHttpRequest, status) {　
+			}
+        }) ;
     }
 </script>
 <!-- //js -->

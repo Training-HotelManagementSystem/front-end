@@ -199,6 +199,7 @@
     }
 
     $.fn.createpagination = function(data){
+        this.empty();
         pagination.fill(this, data);
     }
 })(jQuery);

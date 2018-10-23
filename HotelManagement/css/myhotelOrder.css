@@ -2,7 +2,7 @@
     margin: 50px auto;
     width: 1000px;
 }
-.orderInfo{
+.orderInfo, .waitingComment, .evaluatedComment{
     border: 1px solid #ddd;
     line-height: 35px;
 }
@@ -18,6 +18,10 @@
     margin-left: 10px;
     margin-right: 80px;
 }
+.checkInTime{
+    margin-left: 10px;
+    margin-right: 80px;
+}
 .orderImg{
     width:150px;
     height: 100px;
@@ -25,6 +29,11 @@
     margin-left: 10px;
 }
 .left{
+    float: left;
+    margin-left: 10px;
+}
+.left_evaluated{
+    width: 700px;
     float: left;
     margin-left: 10px;
 }
@@ -46,6 +55,11 @@
 .right{
     float: right;
 }
+.cancelDiv img{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
 .charge{
    color: #ef5734
 }
@@ -58,9 +72,4 @@
     margin-top: 20px;
     background-color: #ef5734;
     color: white;
-}
-.pageDiv{
-    margin: 50px auto;
-    width: 1000px;
-    padding-left: 28%;
 }

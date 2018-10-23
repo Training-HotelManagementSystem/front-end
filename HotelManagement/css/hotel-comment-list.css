@@ -1,0 +1,209 @@
+div[id=hotel-comment-list] span[name=profile-pic]{
+	width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    margin-top: -10px;
+}
+div[id=hotel-comment-list] span[name=user-name]{
+	display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    margin-top: 8px;
+}
+div[id=hotel-comment-list] div[name=left_div]{
+	text-align: center;
+	width: 10%;
+	padding: 0;
+}
+div[id=hotel-comment-list] div[name=right_first_left_div] > span{
+	font-size: 12px;
+	display: inline-block;
+    width: 87px;
+    height: 14px;
+    background: url(../icon/star_icon.png) no-repeat 0 0;
+    background-size: 175px 83px;
+    background-position: left bottom;
+}
+div[id=hotel-comment-list] div[name=right_first_left_div] > span > span{
+	display: inline-block;
+    height: 100%;
+    background: url(../icon/star_icon.png) no-repeat 0 0;
+    background-size: 175px 83px;
+    background-position: left top;
+}
+div[id=hotel-comment-list] span[name=room_category]{
+	background: #eff7ff;
+    font-size: 12px;
+    color: #555;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+div[id=hotel-comment-list] span[name=date]{
+	margin: 0 0 0 10px;
+    font-size: 12px;
+    color: #999;
+    vertical-align: middle;
+    float: right;
+}
+div[id=hotel-comment-list] p[name=feeling]{
+	display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 0;
+    padding: 0;
+	font-size: 16px;
+    line-height: 28px;
+    margin-top: 17px;
+    margin-bottom: 10px;
+    color: #333;
+    position: relative;
+}
+div[id=hotel-comment-list] div[name=photos]{
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 60px;
+	width: 60px;
+	background-position: center center;
+	display: inline-block;
+}
+div[id=hotel-comment-list] div[name=right_forth_div]{
+	background-color: #f5f5f5;
+    font-size: 14px;
+    line-height: 28px;
+    overflow: hidden;
+    color: #333;
+    /*padding: 10px 15px;*/
+    margin-top: 15px;
+    min-height: 0;
+    margin-bottom: 15px;
+}
+div[id=hotel-comment-list] b[name=grade]{
+	font-size: 18px;
+    color: #00bb98;
+    margin-left: 5px;
+}
+div[id=hotel-comment-list] span[name=reply]{
+	font-size: 16px;
+    line-height: 28px;
+    color: #333;
+}
+div[id=hotel-comment-list] div[name=right_first_left_div]{
+	padding: 0;
+	width: 14%;
+}
+div[id=hotel-comment-list] div[name=right_first_mid_div]{
+	padding: 0;
+}
+div[id=hotel-comment-list] div[name=right_first_right_div]{
+	padding: 0;
+	float: right;
+}
+div[id=hotel-comment-list] div[name=right_first_div]{
+	padding-right: 0;
+}
+div[id=hotel-comment-list] p[name=feeling] i{
+	position: absolute;
+    right: 0;
+    width: 55px;
+    height: 57px;
+    background: url(../icon/star_icon.png) no-repeat;
+    background-size: 120px 57px;
+    background-position: right top;
+    vertical-align: middle;
+    overflow: hidden;
+}
+div[id=hotel-comment-list] > div{
+	border-bottom: solid 0.5px #cacaca;
+	margin-top: 20px;
+}
+div.total-grade{
+	float: left;
+    display: inline;
+    zoom: 1;
+    padding: 16px 15px 13px 20px;
+    border: 1px solid #eeeae0;
+    position: static;
+}
+div.total-grade > div.title{
+	float: left;
+    display: inline;
+    line-height: 16px;
+}
+div.total-grade > div.score{
+	float: left;
+    display: inline;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+    color: #0088a4;
+    cursor: default;
+}
+div.total-grade > div.score > span{
+	color: #0088a4;
+    cursor: default;
+	font: normal 20px/16px tahoma;
+}
+div[id=filter] > ul{
+	margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+div[id=filter] > ul > li{
+	list-style: none;
+	margin: 0;
+	float: left;
+    line-height: 44px;
+    padding: 0 12px;
+    cursor: pointer;
+    margin-right: 3px;
+    color: #555;
+    font-size: 14px;
+}
+div[id=filter] > ul > li.on, div[id=filter] > ul > li:hover{
+	color: #49f;
+    border-bottom: 2px #49f solid;
+    margin-bottom: -1px;
+}
+div[id=filter]{
+	height: 44px;
+    line-height: 44px;
+    background: #f5f5f5;
+}
+div[id=total-grade]{
+	padding: 0;
+}
+div[id=total-grade] span[name=avg-star]{
+	font-size: 12px;
+    display: inline-block;
+    width: 87px;
+    height: 14px;
+    background: url(../icon/star_icon.png) no-repeat 0 0;
+    background-size: 175px 83px;
+    background-position: left bottom;
+}
+div[id=total-grade] span[name=avg-star] > span{
+	display: inline-block;
+    height: 100%;
+    background: url(../icon/star_icon.png) no-repeat 0 0;
+    background-size: 175px 83px;
+    background-position: left top;
+    margin-bottom: 2px;
+}

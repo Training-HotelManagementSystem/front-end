@@ -150,7 +150,19 @@
 	});
 
 	function next(){
-		window.location.href='waitingForChecking.html?orderId='+orderId;
+		$.post("http://120.79.73.26:8081/order/payOrder",
+		{
+			orderId:orderId
+		},
+		function(data,status){
+			if(data["code"] == 0){
+				console.log(data.content);
+				window.location.href='waitingForChecking.html?orderId='+orderId;
+			} else{
+				alert("支付失败！");
+			}
+		});
+		
 	}
 </script>
 <!-- //js -->

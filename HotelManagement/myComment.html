@@ -61,8 +61,8 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active" id="waitForEvaluate">
-            <div class="orderInfo">
-                <div class="info_top"><p class="orderNo">订单号：5435135456413</p><p class="bookTime">预订时间：19/10/2018</p> </div>
+            <div class="waitingComment">
+                <!-- <div class="info_top"><p class="orderNo">订单号：5435135456413</p><p class="bookTime">预订时间：19/10/2018</p> </div>
                 <div style="clear:both"></div>
                 <img class="orderImg" src="images/g1.jpg" alt="">
                 <div class="left">
@@ -79,29 +79,24 @@
                     <p class="orderSatus">预订成功</p>
                     <button type="button" class="evaluateBtn btn">我要点评</button>
                 </div>
-                <div style="clear:both"><br></div>
+                <div style="clear:both"><br></div> -->
             </div>
         </div>
         <div class="tab-pane fade" id="evaluated">
-            <div class="orderInfo">
-                <div class="info_top"><p class="orderNo">订单号：5435135456413</p><p class="bookTime">预订时间：19/10/2018</p> </div>
+            <div class="evaluatedComment">
+                <!-- <div class="info_top"><p class="checkInTime">入住时间：</p><p class="commentTime">时间：19/10/2018</p> </div>
                 <div style="clear:both"></div>
                 <img class="orderImg" src="images/g1.jpg" alt="">
-                <div class="left">
+                <div class="left_evaluated">
                     <p class="hotelName">峨眉山于权温泉酒店</p>
-                    <p class="hotelAddr">温泉大道333号17栋</p>
-                    <p class="tel">电话：0833-5026666</p>
-                </div>
-                <div class="middle">
-                    <p>&nbsp;</p>
-                    <p class="time">入离时间：19/10/2018 ~ 20/10/2018</p>
-                    <p class="charge"><b>￥500</b> </p>
+					<p class="commentContent">asdasd</p>
                 </div>
                 <div class="right">
-                    <p class="orderSatus">预订成功</p>
-                    <button type="button" class="evaluateBtn btn">我要点评</button>
+                    <div class="cancelDiv">
+						<img src="images/cancel.png" alt="">
+					</div>
                 </div>
-                <div style="clear:both"><br></div>
+                <div style="clear:both"><br></div> -->
             </div>
         </div>
     </div>
@@ -145,46 +140,182 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/paging.js"></script> 
 <script src="js/bootstrap-3.1.1.min.js"></script>
+<script src="js/jquery.params.js"></script>
 <script>
-		function pagingSettings(totalPage, currPage){
-			$.createpagination({
-				total_page: totalPage,
-				current_page: currPage,
-				callback: function(html_str){
-					$("#page").append(html_str);
-				}
-			})
-		}
-</script>
-
-<script>
-	$(document).ready(function(){
-		var hotelId = 14;
-		//获取酒店的基本信息
-		$.post("http://120.79.73.26:8081/hotel/selectBaseByHotelId",
-		{
-			id:hotelId
-		},
-		function(data,status){
-			if(data["code"] == 0){
-				$('.hotelName').text(data.content.name);
-				$('.hotelAddr').text(data.content.address);
-				for(var i = 1; i <= 7; i ++){
-					var imgURL = data.content.hotelPhotos[i].url;
-					$('.pic'+i).attr("src", imgURL);
-				}
-				$('.minPrice').html("￥<p>"+data.content.minPrice+"</p>起");
-				var score;
-				if(data.content.avgGrade == null){
-					score = 0;
-				} else{
-					score = data.content.avgGrade.toFixed(2);
-				}
-				$('.hotelScore').text(score);
-				$('.moveto_comment').html("<a href=\"#comment\">前往查看" + data.content.totalCommnet + "条评论》</a>");
+	function pagingSettings(totalPage, currPage){
+		$('div[name=page]').createpagination({
+			total_page: totalPage,
+			current_page: currPage,
+			onclick: function(number){
+				// window.location.href='myHotelOrder.html?pageNum='+number;
 			}
 		});
-		
+	}
+</script>
+<script>
+	$(document).ready(function(){
+		var userId = 1;
+		var pageNum = $.query.get("pageNum");
+		var pageSize = 5;
+		//获取待点评订单信息
+		$.ajax({
+			type: "post",
+			beforeSend: function(xhr) {
+				var storage = window.localStorage;
+				var token = storage.token;
+				xhr.setRequestHeader("Authorization", token);
+			},
+			data:{
+				pageNum:pageNum,
+				pageSize:pageSize,
+				userId:userId
+			},
+			url: "http://120.79.73.26:8081/order/selectRatableOrderByUserId",
+			success: function(data) {
+				var orderId_list;
+				if(data["code"] == 0){
+					for(var i = 0; i < data.content.list.length; i ++){
+						var bookTime = data.content.list[i].ordertime.substring(0, 10);
+						var checkIn = data.content.list[i].checkInTime.substring(0, 10);
+						var checkOut = data.content.list[i].checkOutTime.substring(0, 10);
+						var state;
+						if(data.content.list[i].state == 1){
+							state = "等待支付";
+						} else if(data.content.list[i].state == 2){
+							state = "等待审核";
+						} else if(data.content.list[i].state == 3){
+							state = "等待入住";
+						} else if(data.content.list[i].state == 4){
+							state = "已退房&nbsp&nbsp&nbsp&nbsp";
+						} else if(data.content.list[i].state == 5){
+							state = "已退房&nbsp&nbsp&nbsp&nbsp";
+						} else{
+							state = "订单失效";
+						}
+						var orderNoDiv = "<div class=\"orderInfo\">"+
+								"<div class=\"info_top\"><p class=\"orderNo\">订单号："+data.content.list[i].orderId+"</p><p class=\"bookTime\">预订时间："+bookTime+"</p></div>"+
+								"<div style=\"clear:both\"></div>"+
+								"<img class=\"orderImg\" src=\""+data.content.list[i].hotel.photos+"\" alt=\"\">"+
+								"<div class=\"left\">"+
+									"<p class=\"hotelName\">"+data.content.list[i].hotel.name+"</p>"+
+									"<p class=\"hotelAddr\">"+data.content.list[i].hotel.address+"</p>"+
+									"<p class=\"tel\">电话："+data.content.list[i].hotel.phone+"</p>"+
+								"</div>"+
+								"<div class=\"middle\">"+
+									"<p>&nbsp;</p>"+
+									"<p class=\"time\">入离时间："+checkIn+" ~ "+checkOut+"</p>"+
+									"<p class=\"charge\">￥<b class=\"totalPrice\">"+data.content.list[i].totalPrice+"</b> </p>"+
+								"</div>"+
+								"<div class=\"right\">"+
+									"<p class=\"orderSatus\">"+state+"</p><div class=\"btnDiv\">"+
+									"<button type=\"button\" class=\"evaluateBtn btn\" onclick=\"commentClick()\">我要点评</button>"+
+									"<button type=\"button\" class=\"evaluateBtn2 btn\">已点评</button>"+
+								"</div></div>"+
+								"<div style=\"clear:both\"><br></div>"+
+							"</div>";
+							
+						$(".waitingComment").append(orderNoDiv);
+
+						orderId_list = document.getElementsByClassName('btnDiv');
+						// console.log(orderId_list);
+						orderId_list[i].orderId = data.content.list[i].orderId;
+						orderId_list[i].state = data.content.list[i].state;
+						// console.log(orderId_list[i].orderId);
+						orderId_list[i].onclick=function(){
+							if(this.state == 4){
+								window.location.href='comment.html?orderId='+this.orderId;
+							}
+							
+						}
+
+						if(data.content.list[i].state == 4){
+							$('.evaluateBtn2').remove();
+						} else if(data.content.list[i].state == 5){
+							$('.evaluateBtn').remove();
+						} else{
+							$('.evaluateBtn').remove();
+							$('.evaluateBtn2').remove();
+						}
+
+
+					}
+					var pageDiv = "<div class=\"pageDiv\">"+
+									"<div name=\"page\"></div>"+
+								"</div>";
+					$(".waitingComment").append(pageDiv);
+					
+					pagingSettings(data.content.pages,data.content.pageNum);
+				}
+			},
+			error: function(err) {
+				console.log("error:"+err);
+			},
+			complete: function(XMLHttpRequest, status) {　
+			}
+		});
+
+
+		//获取已点评订单信息
+		$.ajax({
+			type: "post",
+			beforeSend: function(xhr) {
+				var storage = window.localStorage;
+				var token = storage.token;
+				xhr.setRequestHeader("Authorization", token);
+			},
+			data:{
+				pageNum:pageNum,
+				pageSize:pageSize,
+				userId:userId
+			},
+			url: "http://120.79.73.26:8081/comment/selectAllCommentByUserId",
+			success: function(data) {
+				var comment_list;
+				if(data["code"] == 0){
+					console.log(data.content);
+					for(var i = 0; i < data.content.list.length; i ++){
+						// var bookTime = data.content.list[i].ordertime.substring(0, 10);
+						var checkIn = data.content.list[i].checkInTime.substring(0, 10);
+						var commentTime = data.content.list[i].publishdate.substring(0, 10);
+						var feeling = data.content.list[i].feeling;
+						var hotelName = data.content.list[i].hotel.name;
+						var hotelImg = data.content.list[i].hotel.photos;
+						var commentDiv = "<div class=\"info_top\"><p class=\"checkInTime\">入住时间："+checkIn+"</p><p class=\"commentTime\">评论时间："+commentTime+"</p> </div>"+
+											"<div style=\"clear:both\"></div>"+
+											"<img class=\"orderImg\" src=\""+hotelImg+"\" alt=\"\">"+
+											"<div class=\"left_evaluated\">"+
+												"<p class=\"hotelName\">"+hotelName+"</p>"+
+												"<p class=\"commentContent\">"+feeling+"</p>"+
+											"</div>"+
+											"<div class=\"right\">"+
+												"<div class=\"cancelDiv\">"+
+													"<img src=\"images/cancel.png\" alt=\"\">"+
+												"</div>"+
+											"</div>"+
+											"<div style=\"clear:both\"><br></div>"+
+										"</div>";
+							
+						$(".evaluatedComment").append(commentDiv);
+
+						comment_list = document.getElementsByClassName('cancelDiv');
+						comment_list[i].commentId = data.content.list[i].id;
+						comment_list[i].onclick=function(){
+							alert(this.commentId);
+						}
+					}
+					var pageDiv = "<div class=\"pageDiv\">"+
+									"<div name=\"page\"></div>"+
+								"</div>";
+					$(".evaluatedComment").append(pageDiv);
+					pagingSettings(data.content.pages,data.content.pageNum);
+				}
+			},
+			error: function(err) {
+				console.log("error:"+err);
+			},
+			complete: function(XMLHttpRequest, status) {　
+			}
+		});
 	});
 </script>
 <!-- //js -->

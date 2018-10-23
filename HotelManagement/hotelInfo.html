@@ -13,8 +13,9 @@
 <!-- //custom-theme -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/hotel-comment-list.css">
 <!-- //font-awesome-icons -->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
 </head>
 <body>
 <!-- header -->
@@ -84,6 +85,23 @@
 		<p class="hotelScore"></p>/5分
 		<div class="minPrice">￥<p>500</p>起</div>
 		<div class="moveto_comment"><a href="#comment"></a></div>
+		<div class="essence-comment">
+			<span>优质评论</span>
+			<div name="comment-text">
+				<ul>
+					<li><p></p></li>
+					<li><p></p></li>
+					<li><p></p></li>
+				</ul>
+			</div>
+			<div name="comment-person">
+				<ul>
+					<li><span name="head-icon"></span></li>
+					<li><span name="head-icon"></span></li>
+					<li><span name="head-icon"></span></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div><br><br>
 <div id="fixPara">
@@ -96,7 +114,7 @@
 				<a class="flag hq_zsh" onclick="dj(this);" href="#facilityInfo">&nbsp;&nbsp;酒店信息&nbsp;&nbsp;</a>
 			</td>
 			<td>
-				<a class="flag hq_hb" onclick="dj(this);" href="#comment">&nbsp;&nbsp;点&nbsp;&nbsp;评&nbsp;&nbsp;</a>
+				<a class="flag hq_hb" onclick="dj(this);" href="#dianping">&nbsp;&nbsp;点&nbsp;&nbsp;评&nbsp;&nbsp;</a>
 			</td>
 		</tr>
 	</table>
@@ -150,10 +168,10 @@
 		</tbody>
 	</table>
 </div>
-<div class="comment">
+<!-- <div class="comment">
 	<h3>点 评</h3>
 	<div id="comment"></div>
-	<!-- <div class="comment_info">
+	<div class="comment_info">
         <div class="avatar">
             <img src="images/g1.jpg" alt="">
             <p>用户名</p>
@@ -162,26 +180,44 @@
             <p>评分</p>
             <p>评论</p>
         </div>
-    </div> -->
-</div>
+    </div>
+</div> -->
+<div id="dianping" style="height: 28px;"></div>
+	<div class="container" id="total-grade">
+		<div class="total-grade col-md-12">
+			<div class="title">整体评价</div>
+			<div class="score">
+				<span name="avg-star">
+					<span></span>
+				</span>
+				<span name="avg-grade">4.7</span>分
+			</div>
+		</div>
+	</div>
+	<div class="container" id="filter">
+		<ul>
+			<li class="on" condition="all" onclick="selectCondition(this)">
+				全部(4404)
+			</li>
+			<li class="" condition="recommend" onclick="selectCondition(this)">
+				推荐(4214)
+			</li>
+			<li class="" condition="not-recommend" onclick="selectCondition(this)">
+				不推荐(177)
+			</li>
+		</ul>
+	</div>
+	<div id="hotel-comment-list" class="container"></div>
+	<div id="pagination" class="container" style="text-align: center;"></div>
 
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 <!-- js -->
 <script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/paging.js"></script> 
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-<script>
-	function pagingSettings(totalPage, currPage){
-		$('#page').createpagination({
-			total_page: totalPage,
-			current_page: currPage,
-			onclick: function(number){
-				
-			}
-		});
-	}
-</script>
+<script src="js/paging.js"></script> 
+<script src="js/hotel-comment-list.js"></script>
+<script type="text/javascript" src="js/jquery.params.js"></script>
 <script>
     window.onload=
         function(){
@@ -224,7 +260,7 @@
 </script>
 <script>
 	$(document).ready(function(){
-		var hotelId = 14;
+		var hotelId = $.query.get("id");
 		//获取酒店的基本信息
 		$.post("http://120.79.73.26:8081/hotel/selectBaseByHotelId",
 		{
@@ -246,7 +282,7 @@
 					score = data.content.avgGrade.toFixed(2);
 				}
 				$('.hotelScore').text(score);
-				$('.moveto_comment').html("<a href=\"#comment\">前往查看" + data.content.totalCommnet + "条评论》</a>");
+				$('.moveto_comment').html("<a href=\"#dianping\">前往查看" + data.content.totalCommnet + "条评论》</a>");
 			}
 		});
 		//获取房间信息
@@ -316,9 +352,9 @@
 				var commentDiv = "<div class=\"comment_info\"><div class=\"avatar\"><img src=\"images/g1.jpg\" alt=\"\"><p>用户名</p>"+
         			"</div><div class=\"left_info\"><p>评分</p><p>评论</p></div></div>";
 				// $(".comment").append(commentDiv);
-				var page = "<div id=\"page\"></div>";
-				$(".comment").append(page);
-				pagingSettings(10,1);
+				// var page = "<div id=\"page\"></div>";
+				// $(".comment").append(page);
+				// pagingSettings(10,1);
 				// $('.hotelScore').text(data.content.hotelFacility);
 				// $('.phone').text(data.content.phone);
 				// $('.openTime').text(data.content.openTime);
@@ -330,6 +366,164 @@
 		});
 		
 	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		var id = $.query.get("id");
+		getComments(id, 1);
+		setAvgGrade(id);
+		setCommentNum(id);
+	});
+	function createPagination(total_page, current_page){
+		$("#pagination").createpagination({
+			total_page: total_page,
+			current_page: current_page,
+			onclick: function(number){
+				var id = $.query.get("id");
+				getComments(id, number);
+				var jump =  $("#total-grade").offset().top;
+				$("html,body").animate({scrollTop:jump},500);
+			}
+		});
+	}
+	function getComments(hotel_id,number){
+		var condition = null;
+		var recommend = null;
+		$("#filter").find("li").each(function(){
+			if($(this).attr("class") == "on"){
+				condition = $(this).attr("condition");
+			}
+		});
+		if (condition == "all") {
+			recommend = null;
+		}
+		if (condition == "recommend") {
+			recommend = 0;
+		}
+		if (condition == "not-recommend"){
+			recommend = 1;
+		}
+		$.ajax({
+			url: "http://120.79.73.26:8081/comment/selectCommentByHotelId",
+			data: {
+				"hotelId": hotel_id,
+				"pn": number,
+				"recoomend": recommend
+			},
+			dataType: "json",
+			type: "post",
+			success: function(msg){
+				console.log(msg);
+				createCommentList(msg);
+				autoSilde(msg);
+			},
+			error: function(msg){
+				alert("error");
+			}
+		});
+	}
+	function createCommentList(msg){
+		$("#hotel-comment-list").createcommentlist(msg.content.list);
+		createPagination(msg.content.pages, msg.content.pageNum);
+	}
+	function selectCondition(element){
+		$(element).parent().find("li").each(function(){
+			$(this).attr("class", "");
+		});
+		$(element).attr("class","on");
+		getComments($.query.get("id"),1);
+	}
+	function setAvgGrade(id){
+		var avgGrade;
+		$.ajax({
+			url:"http://120.79.73.26:8081/hotel/selectBaseByHotelId",
+			data:{id: id},
+			type:"post",
+			dataType:"json",
+			success: function(msg){
+				console.log(msg);
+				$("#total-grade").find("span[name=avg-grade]").text(msg.content.avgGrade.toFixed(1));
+				$("#total-grade").find("span[name=avg-star]").children("span").width(msg.content.avgGrade / 5 * 100 + "%");
+			},
+			error: function(msg){
+				alert("error");
+			}
+		});
+	}
+	function setCommentNum(id){
+		$.ajax({
+			url: "http://120.79.73.26:8081/comment/selectCommentByHotelId",
+			data: {
+				"hotelId": id,
+				"pn": 1,
+				"recoomend": null
+			},
+			dataType: "json",
+			type: "post",
+			success: function(msg){
+				$("#filter").find("li[condition=all]").text("全部(" + msg.content.total + ")");
+			},
+			error: function(msg){
+				alert("error");
+			}
+		});
+		$.ajax({
+			url: "http://120.79.73.26:8081/comment/selectCommentByHotelId",
+			data: {
+				"hotelId": id,
+				"pn": 1,
+				"recoomend": 0
+			},
+			dataType: "json",
+			type: "post",
+			success: function(msg){
+				$("#filter").find("li[condition=recommend]").text("推荐(" + msg.content.total + ")");
+			},
+			error: function(msg){
+				alert("error");
+			}
+		});
+		$.ajax({
+			url: "http://120.79.73.26:8081/comment/selectCommentByHotelId",
+			data: {
+				"hotelId": id,
+				"pn": 1,
+				"recoomend": 1
+			},
+			dataType: "json",
+			type: "post",
+			success: function(msg){
+				$("#filter").find("li[condition=not-recommend]").text("不推荐(" + msg.content.total + ")");
+			},
+			error: function(msg){
+				alert("error");
+			}
+		});
+	}
+	function autoSilde(msg){
+		$("div[name=comment-text]").find("li").each(function(index, element){
+			$(element).find("p").text(msg.content.list[index].feeling);
+		});
+		$("div[name=comment-person]").find("li").each(function(index, element){
+			$(element).find("span").text(msg.content.list[index].userDto.username);
+		});
+		var ref = setInterval(function(){
+			var block_feeling = $("div[name=comment-text]").find("ul");
+			var block_person = $("div[name=comment-person]").find("ul");
+			if (block_feeling.css("margin-left") == "0px") {
+				block_feeling.animate({marginLeft: "-240px"});
+				block_person.animate({marginLeft: "-240px"});
+			}else if (block_feeling.css("margin-left") == "-240px") {
+				block_feeling.animate({marginLeft: "-480px"});
+				block_person.animate({marginLeft: "-480px"});
+			}else if (block_feeling.css("margin-left") == "-480px") {
+				block_feeling.animate({marginLeft: "0px"});
+				block_person.animate({marginLeft: "0px"});
+			}
+		},4000);
+
+
+	}
 </script>
 <!-- //js -->
 </body>

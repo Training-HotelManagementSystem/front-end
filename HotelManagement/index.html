@@ -28,6 +28,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
 <link rel="stylesheet" href="css/baguetteBox.min.css">
 <link rel="stylesheet" href="css/thumbnail-gallery.css">
+<link rel="stylesheet" type="text/css" href="css/cityselect.css">
 <link href="css/index.css" rel="stylesheet">
 <!-- <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
@@ -97,11 +98,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane fade in active" id="internal">
 							<div class="search-tab">
-								<form class="form-horizontal">
+								<form class="form-horizontal" onsubmit="return searchHotel(this)" position="domestic">
 									<div class="form-group item-search">
 										<label for="destination" class="col-sm-3 control-label">目的地</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="destination" placeholder="北京市">
+											<input type="text" class="form-control" name="destination" id="destination" value="广州市">
 										</div>
 									</div>
 									<div class="form-group item-search">
@@ -114,12 +115,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 									<div class="form-group item-search">
 										<label for="keywords" class="col-sm-3 control-label">关键词</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="keywords" placeholder="如位置\酒店名\品牌">
+											<input type="text" class="form-control" id="keywords" name="keywords" placeholder="如位置\酒店名\品牌">
 										</div>
 									</div>
 									<div class="form-group item-search">
 										<div class="col-sm-12">
-											<span type="submit" class="form-control btn btn-primary button-search" id="search-hotel">
+											<span type="submit" onclick="searchHotel(this)" class="form-control btn btn-primary button-search" id="search-hotel">
 												<span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span> 搜索
 											</span>
 										</div>
@@ -128,7 +129,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							</div>
 						</div>
 						<div class="tab-pane fade" id="overseas">
-							<form class="form-horizontal">
+							<form class="form-horizontal"  onsubmit="return searchHotel(this)" position="foreign">
 								<div class="form-group item-search">
 									<label for="destination" class="col-sm-3 control-label">目的地</label>
 									<div class="col-sm-9">
@@ -150,7 +151,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								</div>
 								<div class="form-group item-search">
 									<div class="col-sm-12">
-										<span type="submit" class="form-control btn btn-primary button-search" id="search-hotel">
+										<span type="submit" onclick="searchHotel(this)" class="form-control btn btn-primary button-search" id="search-hotel">
 											<span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span> 搜索
 										</span>
 									</div>
@@ -673,6 +674,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<script type="text/javascript" src="js/daterangepicker.js"></script>
 		<script src="js/date.format.js"></script>
 		<script type="text/javascript" src="js/baguetteBox.min.js"></script>
+		<script type="text/javascript" src="js/jquery.params.js"></script>
+		<script type="text/javascript" src="js/cityselect.js"></script>
 		<script type="text/javascript">
 			$(window).load(function() {
 				$("#flexiselDemo1").flexisel({
@@ -699,8 +702,28 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				});
 
 				daterangepickerSettings();
+				var test=new Vcity.CitySelector({input:'destination'});
 
 			});
+
+			function searchHotel(element){
+				var info = $(element).parent().parent().parent().serializeArray();
+				var city = info[0].value.replace("市","");
+				var daterange = replaceAll(info[1].value).replace("到", "-").split("-");
+				var check_in = daterange[0] + '/' + daterange[1] + '/' + daterange[2];
+				var check_out = daterange[3] + '/' + daterange[4] + '/' + daterange[5];
+				var keywords = info[2].value;
+				var position = $(element).parent().parent().parent().attr("position");
+				var url = "hotel-list.html?" + "city=" + city + "&check_in=" + check_in + "&check_out=" + check_out + "&keywords=" + keywords + "&position=" + position;
+				window.location.href = url;
+			}
+
+			// 替换所有空格为空字符串
+			function replaceAll(str){
+				if(str!=null)  
+					str = str.replace(/ /g, "")  
+				return str;  
+			}
 
 			// 日期范围选择器函数
 			function daterangepickerSettings(){

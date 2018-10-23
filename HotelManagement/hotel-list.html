@@ -1,0 +1,607 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>去 边 度</title>
+	<!-- custom-theme -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Boat house Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smart phone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom -->
+<!-- //custom-theme -->
+
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/JiSlider.css" rel="stylesheet"> 
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- font-awesome-icons -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome-icons -->
+<link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/baguetteBox.min.css">
+<link rel="stylesheet" href="css/thumbnail-gallery.css">
+<link rel="stylesheet" href="css/cityselect.css">
+<link href="css/index.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/hotel-list.css">
+<!-- <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
+</head>
+<body class="bodyStyle">
+	<!-- header -->
+	<div class="banner-top">
+		<div class="header">
+			<div class="container">
+				<div class="header-left">
+					<div class="agileinfo-phone">
+						<p><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> +135 8888 8888</p>
+					</div>
+					<div class="agileinfo-phone agileinfo-map">
+						<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>  D G U T</p>
+					</div>
+					<div class="login">
+						<a href="userLogin.html">登 录</a> / <a href="userRegister.html">注 册</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="w3_navigation">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header navbar-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1><a class="navbar-brand" href="index.html"> 去 边 度 </a></h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<nav class="menu menu--iris">
+							<ul class="nav navbar-nav menu__list">
+								<li class="menu__item"><a href="index.html" class="menu__link">首页</a></li>
+								<li class="menu__item"><a href="domesticSearch.html" class="menu__link">国内酒店</a></li>
+								<li class="menu__item"><a href="foreignSearch.html" class="menu__link">国际酒店</a></li>
+							</ul>
+						</nav>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<!-- //header -->
+	</div>
+	
+	<div class="container">
+		<div class="col-md-12 search-selector">
+			<div class="container " name="list-title">
+				<h1>广州酒店预订</h1>
+				<span>首页>酒店>广州酒店</span>
+			</div>
+
+			<!-- 搜索块 -->
+			<div name="search-info">
+				<form class="form-inline col-md-12" name="search-hotel" onsubmit="return searchHotelList(1);">
+					<div class="form-group col-md-3">
+						<label for="citySelect" class="control-label">目的地</label>
+						<input type="text" class="form-control cityinput" id="citySelect" name="city" value="广州市">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="daterangepicker-internal" class="control-label">入住时间</label>
+						<input class="form-control" name="daterange" id="daterangepicker-internal">
+						<label for="daterangepicker-internal" class="glyphicon glyphicon-calendar btn-lg icon-calendar"></label>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="keywords" class="control-label">关键词</label>
+						<input type="text" class="form-control" id="keywords" name="keywords" placeholder="酒店名\酒店地址">
+					</div>
+					<div class="form-group col-md-2">
+						<label class="form-control btn btn-primary button-search" for="search">
+							<span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span><input type="submit" id="search" value="搜索"/>
+						</label>
+					</div>
+				</form>
+			</div>
+
+			<!-- 筛选块 -->
+			<div class="col-md-12" name="filter">
+				<div class="col-md-12">
+					<div class="col-md-1">
+						房价
+					</div>
+					<div class="col-md-11">
+						<label class="radio-inline"><input type="radio" name="price-hotel">150元以下</label>
+						<label class="radio-inline"><input type="radio" name="price-hotel">150-300元</label>
+						<label class="radio-inline"><input type="radio" name="price-hotel">301-450元</label>
+						<label class="radio-inline"><input type="radio" name="price-hotel">451-600元</label>
+						<label class="radio-inline"><input type="radio" name="price-hotel">600元以上</label>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-1">
+						星级
+					</div>
+					<div class="col-md-11">
+						<label class="radio-inline"><input type="radio" name="star-hotel">经济/客栈</label>
+						<label class="radio-inline"><input type="radio" name="star-hotel">三星/舒适</label>
+						<label class="radio-inline"><input type="radio" name="star-hotel">四星/高档</label>
+						<label class="radio-inline"><input type="radio" name="star-hotel">五星/豪华</label>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-1">
+						主题
+					</div>
+					<div class="col-md-11">
+						<label class="radio-inline"><input type="radio" name="theme-hotel">园林酒店</label>
+						<label class="radio-inline"><input type="radio" name="theme-hotel">情侣酒店</label>
+						<label class="radio-inline"><input type="radio" name="theme-hotel">设计师酒店</label>
+						<label class="radio-inline"><input type="radio" name="theme-hotel">海岛酒店</label>
+						<label class="radio-inline"><input type="radio" name="theme-hotel">青年旅舍</label>
+						<label class="radio-inline"><input type="radio" name="theme-hotel">特色客栈</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+
+	<!-- 排序块 -->
+	<div class="container" name="order-info">
+		<ul class="nav nav-pills" name="order">
+			<li role="presentation" class="active"><a>推荐</a></li>
+			<li role="presentation"><a>口碑↓</a></li>
+			<li role="presentation"><a>价格↑</a></li>
+		</ul>
+	</div>
+
+	<!-- 酒店列表 -->
+	<div class="container">
+		<div id="hotel-list">
+
+		</div>
+
+	</div>
+
+	<!-- 分页 -->
+	<div class="container">
+		<div id="page"></div>
+	</div>
+
+
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="agile_footer_copy">
+				<div class="w3agile_footer_grids">
+					<div class="col-md-4 w3agile_footer_grid">
+						<h3>关于我们</h3>
+						<p>???<span>???</span><span>???</span></p>
+					</div>
+					<div class="col-md-4 w3agile_footer_grid">
+						<h3>联系方式</h3>
+						<ul>
+							<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>D G U T</li>
+							<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>666666666@qq.com</li>
+							<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+135 8888 8888</li>
+						</ul>
+					</div>
+					<div class="col-md-4 w3agile_footer_grid w3agile_footer_grid1">
+						<h3>导航</h3>
+						<ul>
+							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="index.html">首页</a></li>
+							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="domesticSearch.html">国内酒店</a></li>
+							<li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><a href="foreignSearch.html">国际酒店</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->
+
+
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+	<!-- js -->
+	<script src="js/jquery-2.1.4.min.js"></script> 
+	<!-- <script src="js/JiSlider.js"></script> -->
+	<!-- <script>
+		$(window).load(function () {
+			$('#JiSlider').JiSlider({color: '#fff', start: 3, reverse: true}).addClass('ff')
+		})
+	</script> -->
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36251023-1']);
+		_gaq.push(['_setDomainName', 'jqueryscript.net']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+	</script>
+	<script src="js/jarallax.js"></script>
+	<script src="js/SmoothScroll.min.js"></script>
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+
+	<!-- start-smoth-scrolling -->
+	<!-- //for bootstrap working -->
+	<!-- stats -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+	</script>
+	<!-- start-smooth-scrolling -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+				*/
+
+				$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+		</script>
+		<!-- //here ends scrolling icon -->
+
+		<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+		<script type="text/javascript" src="js/daterangepicker.js"></script>
+		<script src="js/date.format.js"></script>
+		<script type="text/javascript" src="js/baguetteBox.min.js"></script>
+		<script type="text/javascript" src="js/paging.js"></script>
+		<script src="js/hotel_list.js"></script>
+		<script src="js/cityselect.js"></script>
+		<script type="text/javascript" src="js/jquery.params.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$("#flexiselDemo1").flexisel({
+					visibleItems:1,
+					animationSpeed: 1000,
+					autoPlay:false,
+					autoPlaySpeed: 3000,    		
+					pauseOnHover: true,
+					enableResponsiveBreakpoints: true,
+					responsiveBreakpoints: { 
+						portrait: { 
+							changePoint:480,
+							visibleItems: 1
+						}, 
+						landscape: { 
+							changePoint:640,
+							visibleItems:1
+						},
+						tablet: { 
+							changePoint:768,
+							visibleItems: 1
+						}
+					}
+				});
+
+				var position = $.query.get("position");
+				if (position == "domestic") {
+					$($("ul.menu__list").children().get(1)).addClass("menu__item--current");
+				}
+
+				if (position == "foreign") {
+					$($("ul.menu__list").children().get(2)).addClass("menu__item--current");
+				}
+
+				var keywords = $.query.get("keywords");
+
+				if(keywords == true){
+					keywords = null;
+				}
+
+				$("#citySelect").val($.query.get("city")+"市");
+
+				$("#keywords").val(keywords);
+
+				var test=new Vcity.CitySelector({input:'citySelect'});
+				daterangepickerSettings();
+				$.ajax({
+					url: "http://120.79.73.26:8081/hotel/selectHotelByDynamic",
+					type: "post",
+					data: {
+						"check_in": $.query.get("check_in"),
+						"check_out": $.query.get("check_out"),
+						"cityName": $.query.get("city"),
+						"keyWord": keywords
+					},
+					dateType: "json",
+					success: function(msg){
+						console.log(msg);
+						changetitle($.query.get("city"));
+						if (msg.code == "0") {
+							createHotelList(msg.content.list);
+							pagingSettings(msg.content.pages, msg.content.pageNum);
+						}else{
+							$("#hotel-list").text(msg.msg);
+						}
+						
+					},
+					error: function(msg){
+						alert("error");
+					}
+				})
+				changeOrder();
+				whenchange();
+				unselect();
+			});
+
+			// 分页函数
+			function pagingSettings(total_page, current_page){
+				$("#page").createpagination({
+					total_page: total_page,
+					current_page: current_page,
+					onclick: function(number){
+						console.log(number);
+						searchHotelList(number);
+						var jump =  $("div[name=order-info]").offset().top;
+						$("html,body").animate({scrollTop:jump},500);
+					}
+				});
+			}
+
+			// 日期范围选择器函数
+			function daterangepickerSettings(){
+				var myDate = new Date();
+				var startDate = $.query.get("check_in");
+				var endDate = $.query.get("check_out");
+				var maxDate = myDate.dateAdd('m',1).format('Y/m/d');
+				$("[name='daterange']").daterangepicker({
+					"locale": {
+						"direction": "ltr",
+						"format": "YYYY-MM-DD",
+						"separator": " 到 ",
+						"applyLabel": "选择",
+						"cancelLabel": "取消",
+						"fromLabel" : "开始",
+						"toLabel": "结束",
+						"customRangeLabel" : "自定义",
+						"daysOfWeek": [
+						"日",
+						"一",
+						"二",
+						"三",
+						"四",
+						"五",
+						"六"
+						],
+						"monthNames": [
+						"一月",
+						"二月",
+						"三月",
+						"四月",
+						"五月",
+						"六月",
+						"七月",
+						"八月",
+						"九月",
+						"十月",
+						"十一月",
+						"十二月"
+						],
+						"firstDay": 0
+					},
+					"startDate": startDate,
+					"endDate": endDate,
+					"minDate": startDate,
+					"maxDate": maxDate
+				}, function(start, end, label) {
+				});
+			}
+
+			// 通过条件搜索酒店函数
+			function searchHotelList(number){
+				var search_info = $("form[name='search-hotel']").serializeArray();
+				var date_str = replaceAll(search_info[1].value).replace("到", "-").split("-");
+				var check_in = date_str[2] + '/' + date_str[1] + '/' + date_str[0];
+				var check_out = date_str[5] + '/' + date_str[4] + '/' + date_str[3];
+				var city = search_info[0].value.replace("市", "");
+				var keywords = search_info[2].value;
+				if(keywords == ""){
+					keywords == null;
+				}
+
+				var pricerange = $("input[name='price-hotel']:checked").parent().text();
+				var minPrice = 0;
+				var maxPrice = 1000000;
+				if (pricerange == "150元以下") {
+					maxPrice = 149;
+				}else if(pricerange == "150-300元"){
+					minPrice = 150;
+					maxPrice = 300;
+				}else if(pricerange == "301-450元"){
+					minPrice = 301;
+					maxPrice = 450;
+				}else if(pricerange == "451-600元"){
+					minPrice = 451;
+					maxPrice = 600;
+				}else if(pricerange == "600元以上"){
+					minPrice = 601;
+				}
+
+				var starLevel = $("input[name='star-hotel']:checked").parent().text();
+				var star;
+				if (starLevel == "经济/客栈") {
+					star = 2;
+				}else if(starLevel == "三星/舒适"){
+					star = 3;
+				}else if(starLevel == "四星/高档"){
+					star = 4;
+				}else if(starLevel == "五星/豪华"){
+					star = 5;
+				}
+
+				var hotelCategory = $("input[name='theme-hotel']:checked").parent().text();
+				if (hotelCategory == "") {
+					hotelCategory = undefined;
+				}
+
+				var order_text = $("ul[name='order']").children("li[class='active']").children("a").text();
+				var order;
+				if (order_text == "口碑↓") {
+					order = "grade";
+				}else if(order_text == "价格↑"){
+					order = "price_asc";
+				}else if (order_text == "价格↓") {
+					order = "price_desc";
+				}
+
+				$.ajax({
+					url: "http://120.79.73.26:8081/hotel/selectHotelByDynamic",
+					type: "post",
+					data: {
+						"check_in": check_in,
+						"check_out": check_out,
+						"cityName": city, 
+						"pn": number,
+						"minPrice": minPrice,
+						"maxPrice": maxPrice,
+						"star_level": star,
+						"hotelCategory": hotelCategory,
+						"sortKey": order,
+						"keyWord": keywords
+					},
+					dateType: "json",
+					success: function(msg){
+						console.log(msg);
+						changetitle($("#citySelect").val().replace("市", ""));
+						if (msg.code == "0") {
+							createHotelList(msg.content.list);
+							pagingSettings(msg.content.pages, msg.content.pageNum);
+						}else{
+							$("#hotel-list").text(msg.msg);
+						}
+						
+					},
+					error: function(msg){
+						alert("error");
+					}
+				})
+				return false;
+			}
+
+			// 替换所有空格为空字符串
+			function replaceAll(str){
+				if(str!=null)  
+					str = str.replace(/ /g, "")  
+				return str;  
+			}
+
+			// 创建酒店列表
+			function createHotelList(list){
+				$("#hotel-list").createhotellist({
+					hotel_list: list
+				});
+			}
+
+			// 更改排序
+			function changeOrder(){
+				$("ul[name='order']").children("li").each(function(){
+					$(this).click(function(){
+						if ($(this).hasClass("active")) {
+							if ($(this).children("a").text() == "价格↑") {
+								$(this).children("a").text("价格↓");
+								searchHotelList(1);
+							}else if ($(this).children("a").text() == "价格↓") {
+								$(this).children("a").text("价格↑");
+								searchHotelList(1);
+							}
+						}else{
+							$("ul[name='order']").children("li").removeClass("active");
+							$(this).addClass("active");
+							searchHotelList(1);
+						}
+
+						
+					})
+				})
+
+			}
+
+			function whenchange(){
+				$("#daterangepicker-internal").change(function(){
+					searchHotelList(1);
+				});
+				$("#keywords").change(function(){
+					searchHotelList(1);
+				});
+				$("input[name='price-hotel']").change(function(){
+					searchHotelList(1);
+				});
+				$("input[name='star-hotel']").change(function(){
+					searchHotelList(1);
+				});
+				$("input[name='theme-hotel']").change(function(){
+					searchHotelList(1);
+				});
+			}
+
+			function changetitle(city){
+				$("div[name='list-title']").children("h1").text(city + "酒店预订");
+				$("div[name='list-title']").children("span").text("酒店搜索>" + city + "酒店");
+			}
+
+			function unselect(){
+				$("div[name='filter']").find("input").each(function(){
+					$(this).click(function(){
+						if ($(this).attr("checked")) {
+							$(this).attr("checked", false);
+							searchHotelList(1);
+						}else{
+							$(this).attr("checked", true);
+						}
+					});
+				});
+			}
+
+		</script>
+		<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+
+
+	</body>
+	</html>
